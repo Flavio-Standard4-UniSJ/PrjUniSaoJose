@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "633980232301",
+    "project_id": "usj-chat-demo-8e423",
+    "storage_bucket": "usj-chat-demo-8e423.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:633980232301:android:ee6dc959e68f7de7439564",
+        "android_client_info": {
+          "package_name": "br.saojose.chat"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "633980232301-ikkimp48tjm4efdn5f870k0g27ropgqv.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "br.saojose.chat",
+            "certificate_hash": "9dfd3544d4e73b0f3236637d78ec0c5566cab9b8"
+          }
+        },
+        {
+          "client_id": "633980232301-2scqt8c873bohjsrshh41rlgkf73ra33.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDXSiogIv6FPEzA1Yjn5brIsmSz1TuLbbA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "633980232301-2scqt8c873bohjsrshh41rlgkf73ra33.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
