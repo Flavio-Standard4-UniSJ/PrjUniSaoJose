@@ -23,8 +23,10 @@ public class Taxi extends Bandeira {
         switch (getTipo()){
             case 1:
                 corrida = (float) (4.3 + (1.5 * quilometragem));
+                break;
             case 2:
                 corrida = (float) (4.3 + (1.7 * quilometragem));
+                break;
             default: 
                 corrida = (float) (4.3 + (1.5 * quilometragem));
         }
