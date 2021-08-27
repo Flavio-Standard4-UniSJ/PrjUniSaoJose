@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>Cadastro de Usuários</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <h1>Acesso de Usuários</h1>
+        <form method="POST" action="servUsuario">
+            <table>
+                <thead>
+                    <tr><th>Login: </th><th><input type="text" name="txtlogin" value="" size="20" /></th></tr>
+                    <tr><th>Senha: </th><th><input type="password" name="txtsenha" value="" maxlength="6" /></th></tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><input type="submit" name="botao" value="Entrar"></td>
+                        <td><input type="reset" name="botao" value="Limpar"></td>
+                    </tr>
+                    <tr><td><a href="index.html" target="_self">Esqueci minha senha</a></td></tr>
+                </tbody>
+            </table>
+        </form>
+        
+    </body>
+</html>
