@@ -1,0 +1,36 @@
+
+---------------------------------------------------------------------------------
+create table usuario (
+	nome varchar(50), 
+	email varchar(50), 
+	senha varchar(200), 
+	cpf varchar(11), 
+	telefone varchar(14), 
+	registroLar varchar(50), 
+	endereco varchar(250)
+)
+
+alter table usuario add constraint cpf primary key (cpf)
+
+-----------------------------------------------------------------------------------
+create table acesso(
+	id serial primary key,
+	nome_usuario varchar(50),
+	registroLar varchar(50),
+	data_acesso varchar(30),
+	hora_acesso varchar(30)
+)
+
+-----------------------------------------------------------------------------------
+create table usuarioConta (
+	id serial primary key,
+	descricao varchar(50), 
+	valor float, 
+	data_vencimento varchar(20), 
+	data_pagamento varchar(20), 
+	cpf varchar(11) references usuario(cpf), 
+	status integer check(status=0 or status=1)
+)
+
+
+
