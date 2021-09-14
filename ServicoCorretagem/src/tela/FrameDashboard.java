@@ -9,12 +9,12 @@ package tela;
  *
  * @author miserere
  */
-public class TelaCorretor extends javax.swing.JFrame {
+public class FrameDashboard extends javax.swing.JFrame {
 
     /**
-     * Creates new form TelaCorretor
+     * Creates new form FrameDashboard
      */
-    public TelaCorretor() {
+    public FrameDashboard() {
         initComponents();
     }
 
@@ -32,13 +32,12 @@ public class TelaCorretor extends javax.swing.JFrame {
         mnSignUp = new javax.swing.JMenu();
         mnCorretor = new javax.swing.JMenu();
         mnCorretorNovo = new javax.swing.JMenuItem();
-        mnCorretorLogin = new javax.swing.JMenuItem();
+        mnCorretorAlterar = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel1.setText("atlas");
+        jLabel1.setText("DASHBOARD");
 
         mnSignUp.setText("Criar Conta");
 
@@ -52,13 +51,13 @@ public class TelaCorretor extends javax.swing.JFrame {
         });
         mnCorretor.add(mnCorretorNovo);
 
-        mnCorretorLogin.setText("login");
-        mnCorretorLogin.addActionListener(new java.awt.event.ActionListener() {
+        mnCorretorAlterar.setText("alterar");
+        mnCorretorAlterar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                mnCorretorLoginActionPerformed(evt);
+                mnCorretorAlterarActionPerformed(evt);
             }
         });
-        mnCorretor.add(mnCorretorLogin);
+        mnCorretor.add(mnCorretorAlterar);
 
         mnSignUp.add(mnCorretor);
 
@@ -74,16 +73,16 @@ public class TelaCorretor extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(173, 173, 173)
+                .addGap(19, 19, 19)
                 .addComponent(jLabel1)
-                .addContainerGap(191, Short.MAX_VALUE))
+                .addContainerGap(319, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(24, 24, 24)
+                .addGap(23, 23, 23)
                 .addComponent(jLabel1)
-                .addContainerGap(369, Short.MAX_VALUE))
+                .addContainerGap(435, Short.MAX_VALUE))
         );
 
         pack();
@@ -95,11 +94,11 @@ public class TelaCorretor extends javax.swing.JFrame {
         frameRegistro.setVisible(true);
     }//GEN-LAST:event_mnCorretorNovoActionPerformed
 
-    private void mnCorretorLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnCorretorLoginActionPerformed
+    private void mnCorretorAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnCorretorAlterarActionPerformed
         // TODO add your handling code here:
-        FrameLogin login = new FrameLogin();
-        login.setVisible(true);
-    }//GEN-LAST:event_mnCorretorLoginActionPerformed
+        FrameAlterarCorretor alterar = new FrameAlterarCorretor();
+        alterar.setVisible(true);
+    }//GEN-LAST:event_mnCorretorAlterarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -118,20 +117,20 @@ public class TelaCorretor extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(TelaCorretor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrameDashboard.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(TelaCorretor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrameDashboard.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(TelaCorretor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrameDashboard.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(TelaCorretor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrameDashboard.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new TelaCorretor().setVisible(true);
+                new FrameDashboard().setVisible(true);
             }
         });
     }
@@ -140,7 +139,7 @@ public class TelaCorretor extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu mnCorretor;
-    private javax.swing.JMenuItem mnCorretorLogin;
+    private javax.swing.JMenuItem mnCorretorAlterar;
     private javax.swing.JMenuItem mnCorretorNovo;
     private javax.swing.JMenuBar mnPrincipal;
     private javax.swing.JMenu mnSignUp;

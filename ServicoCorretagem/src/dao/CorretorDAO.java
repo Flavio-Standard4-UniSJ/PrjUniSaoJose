@@ -76,7 +76,7 @@ public class CorretorDAO {
         return corretor; 
     }
     
-    public Corretor acessarContaCorretor(String login, String senha) throws Exception{
+    public Corretor acessarContaCorretor(String email, String senha) throws Exception{
         Corretor corretor = new Corretor();
         String sql = ("SELECT * FROM Corretor WHERE email = ? AND senha = md5(?)");
         PreparedStatement preparador = this.conexao.prepareStatement(sql);
@@ -84,14 +84,13 @@ public class CorretorDAO {
         preparador.setString(2, corretor.getSenha());
         ResultSet rs = preparador.executeQuery();
         if(rs.next()){
-            corretor.setNome(rs.getString("nome"));
             corretor.setEmail(rs.getString("email"));
             corretor.setSenha(rs.getString("senha"));
-            System.out.println("Seja bem vindo "+corretor.getEmail());
+            registroLogin(rs.getString("nome"));
+            System.out.println("Seja bem vindo ");
             rs.close();
             preparador.close();
         }
-        registroLogin(corretor.getNome());
         return corretor; 
     }
 }
