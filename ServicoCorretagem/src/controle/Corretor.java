@@ -6,6 +6,7 @@ public class Corretor extends Usuario {
     private String creci, cpf, identidade;
     private String email, senha;
     private String pin, telefone;
+    private int id;
 
     public String getCreci() {
         return creci;
@@ -61,6 +62,14 @@ public class Corretor extends Usuario {
 
     public void setTelefone(String telefone) {
         this.telefone = telefone;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
     
     

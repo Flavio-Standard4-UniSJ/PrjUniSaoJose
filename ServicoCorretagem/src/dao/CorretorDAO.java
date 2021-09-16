@@ -62,20 +62,28 @@ public class CorretorDAO {
         preparador.close();
     }
     
-    public Corretor desativarContaCorretor(String nome) throws Exception{
-        Corretor corretor = new Corretor();
-        String pesq = ("UPDATE Corretor SET ativo=? WHERE nome = ?");
-        PreparedStatement preparador = this.conexao.prepareStatement(pesq);
-        preparador.setString(1, corretor.getNome());
-        ResultSet rs = preparador.executeQuery();
-        if(rs.next()){
-            corretor.setAtivo(rs.getInt("ativo"));
-            rs.close();
-            preparador.close();
-        }
-        return corretor; 
+    public void desativarContaCorretor(Corretor corretor) throws Exception{
+        String sql = ("UPDATE Corretor SET ativo=? WHERE nome = ?");
+        PreparedStatement preparador = this.conexao.prepareStatement(sql);
+        preparador.setInt(1, corretor.getAtivo());
+        preparador.setString(2, corretor.getNome());
+        preparador.execute();
+        preparador.close();
     }
     
+    public void alterarContaCorretor(Corretor corretor) throws Exception{
+        String sql = ("UPDATE Corretor SET email=?, telefone=? WHERE nome = ?");
+        PreparedStatement preparador = this.conexao.prepareStatement(sql);
+        preparador.setString(1, corretor.getEmail());
+        preparador.setString(2, corretor.getTelefone());
+        preparador.setString(3, corretor.getNome());
+        System.out.println(corretor.getEmail());
+        System.out.println(corretor.getTelefone());
+        System.out.println(corretor.getNome());
+        preparador.execute();
+        preparador.close();        
+    }
+      
     public Corretor acessarContaCorretor(String email, String senha) throws Exception{
         Corretor corretor = new Corretor();
         String sql = ("SELECT * FROM Corretor WHERE email = ? AND senha = md5(?)");
@@ -87,7 +95,7 @@ public class CorretorDAO {
             corretor.setEmail(rs.getString("email"));
             corretor.setSenha(rs.getString("senha"));
             registroLogin(rs.getString("nome"));
-            System.out.println("Seja bem vindo ");
+            System.out.println("Seja bem vindo "+rs.getString("nome"));
             rs.close();
             preparador.close();
         }
