@@ -8,6 +8,7 @@ package tela;
 import controle.Corretor;
 import dao.CorretorDAO;
 import java.sql.SQLException;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -43,7 +44,7 @@ public class FrameLogin extends javax.swing.JFrame {
         mnCorretorNovo = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jLabel1.setText("email: ");
 
@@ -123,7 +124,7 @@ public class FrameLogin extends javax.swing.JFrame {
                     .addComponent(txtSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(67, 67, 67)
                 .addComponent(btnLogin)
-                .addContainerGap(133, Short.MAX_VALUE))
+                .addContainerGap(224, Short.MAX_VALUE))
         );
 
         pack();
@@ -137,14 +138,13 @@ public class FrameLogin extends javax.swing.JFrame {
 
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
         // TODO add your handling code here:
-        Corretor corretor = new Corretor();
-        corretor.setEmail(txtEmail.getText());
-        corretor.setSenha(txtSenha.getText());
         try {
             CorretorDAO corretorDAO = new CorretorDAO();
-            corretorDAO.acessarContaCorretor(corretor.getEmail(), corretor.getSenha());
+            Corretor Utilizador = corretorDAO.acessarContaCorretor(txtEmail.getText(), txtSenha.getText());
+                        
             FrameDashboard dashboard = new FrameDashboard();
-            dashboard.setVisible(true);
+            dashboard.setVisible(true); 
+            
         } catch(SQLException ex) {
             ex.printStackTrace();
         } catch(Exception ex) {

@@ -6,7 +6,7 @@
       <SubComponents>
         <Menu class="javax.swing.JMenu" name="mnSignUp">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Criar Conta"/>
+            <Property name="text" type="java.lang.String" value="Configura&#xe7;&#xf5;es"/>
           </Properties>
           <SubComponents>
             <Menu class="javax.swing.JMenu" name="mnCorretor">
@@ -14,20 +14,20 @@
                 <Property name="text" type="java.lang.String" value="Corretor"/>
               </Properties>
               <SubComponents>
-                <MenuItem class="javax.swing.JMenuItem" name="mnCorretorNovo">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="novo"/>
-                  </Properties>
-                  <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mnCorretorNovoActionPerformed"/>
-                  </Events>
-                </MenuItem>
                 <MenuItem class="javax.swing.JMenuItem" name="mnCorretorAlterar">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="alterar"/>
                   </Properties>
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mnCorretorAlterarActionPerformed"/>
+                  </Events>
+                </MenuItem>
+                <MenuItem class="javax.swing.JMenuItem" name="mnCorretorNovoCliente">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="cliente"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mnCorretorNovoClienteActionPerformed"/>
                   </Events>
                 </MenuItem>
               </SubComponents>
@@ -43,7 +43,7 @@
     </Menu>
   </NonVisualComponents>
   <Properties>
-    <Property name="defaultCloseOperation" type="int" value="3"/>
+    <Property name="defaultCloseOperation" type="int" value="2"/>
   </Properties>
   <SyntheticProperties>
     <SyntheticProperty name="menuBar" type="java.lang.String" value="mnPrincipal"/>
@@ -77,7 +77,7 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
               <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="435" max="32767" attributes="0"/>
+              <EmptySpace pref="485" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
