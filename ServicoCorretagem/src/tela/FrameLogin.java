@@ -36,8 +36,8 @@ public class FrameLogin extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         txtEmail = new javax.swing.JTextField();
         btnLogin = new javax.swing.JButton();
-        txtSenha = new javax.swing.JFormattedTextField();
         jLabel3 = new javax.swing.JLabel();
+        pwdSenha = new javax.swing.JPasswordField();
         mnPrincipal = new javax.swing.JMenuBar();
         mnSignUp = new javax.swing.JMenu();
         mnCorretor = new javax.swing.JMenu();
@@ -50,6 +50,7 @@ public class FrameLogin extends javax.swing.JFrame {
 
         jLabel2.setText("senha: ");
 
+        btnLogin.setBackground(new java.awt.Color(0, 153, 51));
         btnLogin.setText("Login");
         btnLogin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -57,13 +58,10 @@ public class FrameLogin extends javax.swing.JFrame {
             }
         });
 
-        txtSenha.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtSenhaActionPerformed(evt);
-            }
-        });
-
+        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel3.setText("Entrar");
+
+        mnPrincipal.setBackground(new java.awt.Color(0, 102, 0));
 
         mnSignUp.setText("Criar Conta");
 
@@ -96,17 +94,17 @@ public class FrameLogin extends javax.swing.JFrame {
                 .addGap(180, 180, 180))
             .addGroup(layout.createSequentialGroup()
                 .addGap(60, 60, 60)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel2)
-                        .addGap(18, 18, 18)
-                        .addComponent(txtSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 227, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                         .addComponent(btnLogin)
                         .addGroup(layout.createSequentialGroup()
                             .addComponent(jLabel1)
                             .addGap(18, 18, 18)
-                            .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 232, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 232, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel2)
+                        .addGap(18, 18, 18)
+                        .addComponent(pwdSenha)))
                 .addContainerGap(59, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -121,8 +119,8 @@ public class FrameLogin extends javax.swing.JFrame {
                 .addGap(44, 44, 44)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(txtSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(67, 67, 67)
+                    .addComponent(pwdSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(64, 64, 64)
                 .addComponent(btnLogin)
                 .addContainerGap(224, Short.MAX_VALUE))
         );
@@ -140,21 +138,19 @@ public class FrameLogin extends javax.swing.JFrame {
         // TODO add your handling code here:
         try {
             CorretorDAO corretorDAO = new CorretorDAO();
-            Corretor Utilizador = corretorDAO.acessarContaCorretor(txtEmail.getText(), txtSenha.getText());
-                        
-            FrameDashboard dashboard = new FrameDashboard();
-            dashboard.setVisible(true); 
-            
+            boolean utilizador = corretorDAO.acessarContaCorretor(txtEmail.getText(), pwdSenha.getText());
+            if(utilizador == true){
+                FrameDashboard dashboard = new FrameDashboard();
+                dashboard.setVisible(true); 
+            }else{
+                JOptionPane.showMessageDialog(null, "Informe credenciais válidas!");
+            }
         } catch(SQLException ex) {
             ex.printStackTrace();
         } catch(Exception ex) {
             ex.getMessage();
         }
     }//GEN-LAST:event_btnLoginActionPerformed
-
-    private void txtSenhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSenhaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtSenhaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -201,7 +197,7 @@ public class FrameLogin extends javax.swing.JFrame {
     private javax.swing.JMenuItem mnCorretorNovo;
     private javax.swing.JMenuBar mnPrincipal;
     private javax.swing.JMenu mnSignUp;
+    private javax.swing.JPasswordField pwdSenha;
     private javax.swing.JTextField txtEmail;
-    private javax.swing.JFormattedTextField txtSenha;
     // End of variables declaration//GEN-END:variables
 }
