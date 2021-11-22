@@ -3,11 +3,40 @@ package servico;
 
 
 public class Imovel {
+    public String descricao;
+    public String localidade;
+    public float preco;
     public String imovel_categoria;
-    public String nome_arquivo;
+    public String nome_arquivo, imagem;
     public String caminho_arquivo;
-    public String size;
+    public String tamanho;
+    public int idCorretor;
 
+    public String getDescricao() {
+        return descricao;
+    }
+
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
+    }
+
+    public String getLocalidade() {
+        return localidade;
+    }
+
+    public void setLocalidade(String localidade) {
+        this.localidade = localidade;
+    }
+
+    public float getPreco() {
+        return preco;
+    }
+
+    public void setPreco(float preco) {
+        this.preco = preco;
+    }
+
+    
     public String getImovel_categoria() {
         return imovel_categoria;
     }
@@ -32,12 +61,28 @@ public class Imovel {
         this.caminho_arquivo = caminho_arquivo;
     }
 
-    public String getSize() {
-        return size;
+    public String getTamanho() {
+        return tamanho;
     }
 
-    public void setSize(String size) {
-        this.size = size;
+    public void setTamanho(String size) {
+        this.tamanho = size;
+    }
+
+    public int getIdCorretor() {
+        return idCorretor;
+    }
+
+    public void setIdCorretor(int idCorretor) {
+        this.idCorretor = idCorretor;
+    }
+
+    public String getImagem() {
+        return imagem;
+    }
+
+    public void setImagem(String imagem) {
+        this.imagem = imagem;
     }
     
     

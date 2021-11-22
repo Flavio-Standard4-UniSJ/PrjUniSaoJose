@@ -39,7 +39,7 @@ public class ClienteDAO {
         preparador.close();
     }
     
-    public void alterarContaCorretor(Cliente cliente) throws Exception{
+    public void alterarCliente(Cliente cliente) throws Exception{
         String sql = "UPDATE Cliente SET email=?, telefone=?, profissao=?, salario=? WHERE nome = ?";        
         PreparedStatement preparador = this.conexao.prepareStatement(sql);
         preparador.setString(1, cliente.getEmail());
@@ -47,5 +47,25 @@ public class ClienteDAO {
         preparador.setString(3, cliente.getNome());
         preparador.execute();
         preparador.close();
+    }
+    
+    public Cliente pesquisarClienteNome(String nome) throws Exception{
+        Cliente cliente = new Cliente();
+        String sql = ("SELECT * FROM Cliente WHERE nome = ?");
+        PreparedStatement preparador = this.conexao.prepareStatement(sql);
+        preparador.setString(1, nome);
+        ResultSet rs = preparador.executeQuery();
+        if(rs.next()){
+            cliente.setNome(rs.getString("nome"));
+            cliente.setSobrenome(rs.getString("sobrenome"));
+            cliente.setNascimento(rs.getString("nascimento"));
+            cliente.setEmail(rs.getString("email"));
+            cliente.setTelefone(rs.getString("telefone"));
+            cliente.setProfissao(rs.getString("profissao"));
+            cliente.setSalario(rs.getFloat("salario"));
+            rs.close();
+            preparador.close();
+        }
+        return cliente; 
     }
 }

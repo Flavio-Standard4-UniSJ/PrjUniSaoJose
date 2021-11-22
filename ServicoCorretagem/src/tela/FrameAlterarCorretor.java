@@ -43,8 +43,8 @@ public class FrameAlterarCorretor extends javax.swing.JFrame {
         mnPrincipal = new javax.swing.JMenuBar();
         mnSignUp = new javax.swing.JMenu();
         mnCorretor = new javax.swing.JMenu();
-        mnCorretorNovo = new javax.swing.JMenuItem();
-        mnCorretorLogin = new javax.swing.JMenuItem();
+        mnCorretorAlterar = new javax.swing.JMenuItem();
+        mnCorretorNovoCliente = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -80,21 +80,21 @@ public class FrameAlterarCorretor extends javax.swing.JFrame {
 
         mnCorretor.setText("Corretor");
 
-        mnCorretorNovo.setText("novo");
-        mnCorretorNovo.addActionListener(new java.awt.event.ActionListener() {
+        mnCorretorAlterar.setText("alterar");
+        mnCorretorAlterar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                mnCorretorNovoActionPerformed(evt);
+                mnCorretorAlterarActionPerformed(evt);
             }
         });
-        mnCorretor.add(mnCorretorNovo);
+        mnCorretor.add(mnCorretorAlterar);
 
-        mnCorretorLogin.setText("login");
-        mnCorretorLogin.addActionListener(new java.awt.event.ActionListener() {
+        mnCorretorNovoCliente.setText("cliente");
+        mnCorretorNovoCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                mnCorretorLoginActionPerformed(evt);
+                mnCorretorNovoClienteActionPerformed(evt);
             }
         });
-        mnCorretor.add(mnCorretorLogin);
+        mnCorretor.add(mnCorretorNovoCliente);
 
         mnSignUp.add(mnCorretor);
 
@@ -164,18 +164,6 @@ public class FrameAlterarCorretor extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void mnCorretorNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnCorretorNovoActionPerformed
-        // TODO add your handling code here:
-        FrameNovoCorretor frameRegistro = new FrameNovoCorretor();
-        frameRegistro.setVisible(true);
-    }//GEN-LAST:event_mnCorretorNovoActionPerformed
-
-    private void mnCorretorLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnCorretorLoginActionPerformed
-        // TODO add your handling code here:
-        FrameLogin login = new FrameLogin();
-        login.setVisible(true);
-    }//GEN-LAST:event_mnCorretorLoginActionPerformed
-
     private void txtEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEmailActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtEmailActionPerformed
@@ -199,6 +187,18 @@ public class FrameAlterarCorretor extends javax.swing.JFrame {
             ex.getMessage();
         }
     }//GEN-LAST:event_btnAlterarActionPerformed
+
+    private void mnCorretorAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnCorretorAlterarActionPerformed
+        // TODO add your handling code here:
+        FrameAlterarCorretor alterar = new FrameAlterarCorretor();
+        alterar.setVisible(true);
+    }//GEN-LAST:event_mnCorretorAlterarActionPerformed
+
+    private void mnCorretorNovoClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnCorretorNovoClienteActionPerformed
+        // TODO add your handling code here:
+        FrameNovoCliente cliente = new FrameNovoCliente();
+        cliente.setVisible(true);
+    }//GEN-LAST:event_mnCorretorNovoClienteActionPerformed
 
     /**
      * @param args the command line arguments
@@ -243,8 +243,8 @@ public class FrameAlterarCorretor extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu mnCorretor;
-    private javax.swing.JMenuItem mnCorretorLogin;
-    private javax.swing.JMenuItem mnCorretorNovo;
+    private javax.swing.JMenuItem mnCorretorAlterar;
+    private javax.swing.JMenuItem mnCorretorNovoCliente;
     private javax.swing.JMenuBar mnPrincipal;
     private javax.swing.JMenu mnSignUp;
     private javax.swing.JTextField txtEmail;

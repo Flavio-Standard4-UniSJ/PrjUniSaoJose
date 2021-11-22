@@ -14,20 +14,20 @@
                 <Property name="text" type="java.lang.String" value="Corretor"/>
               </Properties>
               <SubComponents>
-                <MenuItem class="javax.swing.JMenuItem" name="mnCorretorNovo">
+                <MenuItem class="javax.swing.JMenuItem" name="mnCorretorAlterar">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="novo"/>
+                    <Property name="text" type="java.lang.String" value="alterar"/>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mnCorretorNovoActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mnCorretorAlterarActionPerformed"/>
                   </Events>
                 </MenuItem>
-                <MenuItem class="javax.swing.JMenuItem" name="mnCorretorLogin">
+                <MenuItem class="javax.swing.JMenuItem" name="mnCorretorNovoCliente">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="login"/>
+                    <Property name="text" type="java.lang.String" value="cliente"/>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mnCorretorLoginActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mnCorretorNovoClienteActionPerformed"/>
                   </Events>
                 </MenuItem>
               </SubComponents>
