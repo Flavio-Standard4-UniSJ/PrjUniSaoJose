@@ -63,7 +63,7 @@ public class CorretorDAO {
     }
     
     public void desativarContaCorretor(Corretor corretor) throws Exception{
-        String sql = ("UPDATE Corretor SET ativo=? WHERE nome = ?");
+        String sql = ("UPDATE Corretor SET ativo=0 WHERE nome = ?");
         PreparedStatement preparador = this.conexao.prepareStatement(sql);
         preparador.setInt(1, corretor.getAtivo());
         preparador.setString(2, corretor.getNome());
@@ -97,6 +97,7 @@ public class CorretorDAO {
                 corretor.setNome(rs.getString("nome"));
                 corretor.setEmail(rs.getString("email"));
                 corretor.setSenha(rs.getString("senha"));
+                corretor.setAtivo(rs.getInt("ativo"));
                 status = true;
                 registroLogin(corretor.getNome());
             }

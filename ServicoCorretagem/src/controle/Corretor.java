@@ -8,6 +8,21 @@ public class Corretor extends Usuario {
     private String pin, telefone;
     private int id;
 
+    public Corretor(){
+        super();
+    }
+    public Corretor(String creci, String cpf, String identidade, String email, String senha, String pin, String telefone, int id) {
+        super();
+        this.creci = creci;
+        this.cpf = cpf;
+        this.identidade = identidade;
+        this.email = email;
+        this.senha = senha;
+        this.pin = pin;
+        this.telefone = telefone;
+        this.id = id;
+    }
+
     public String getCreci() {
         return creci;
     }
