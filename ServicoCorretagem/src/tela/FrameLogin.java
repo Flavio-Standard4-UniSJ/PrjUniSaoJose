@@ -8,14 +8,148 @@ package tela;
 import controle.Corretor;
 import dao.CorretorDAO;
 import java.sql.SQLException;
+import javax.accessibility.AccessibleContext;
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
+import javax.swing.JPasswordField;
+import javax.swing.JRootPane;
+import javax.swing.JTextField;
+import servico.Acesso;
 
 /**
  *
  * @author miserere
  */
 public class FrameLogin extends javax.swing.JFrame {
+   private String nomeUsuario; 
 
+    public String getNomeUsuario() {
+        return nomeUsuario;
+    }
+
+    public void setNomeUsuario(String nomeUsuario) {
+        this.nomeUsuario = nomeUsuario;
+    }
+
+    public JButton getBtnLogin() {
+        return btnLogin;
+    }
+
+    public void setBtnLogin(JButton btnLogin) {
+        this.btnLogin = btnLogin;
+    }
+
+    public JLabel getjLabel1() {
+        return jLabel1;
+    }
+
+    public void setjLabel1(JLabel jLabel1) {
+        this.jLabel1 = jLabel1;
+    }
+
+    public JLabel getjLabel2() {
+        return jLabel2;
+    }
+
+    public void setjLabel2(JLabel jLabel2) {
+        this.jLabel2 = jLabel2;
+    }
+
+    public JLabel getjLabel3() {
+        return jLabel3;
+    }
+
+    public void setjLabel3(JLabel jLabel3) {
+        this.jLabel3 = jLabel3;
+    }
+
+    public JMenu getjMenu2() {
+        return jMenu2;
+    }
+
+    public void setjMenu2(JMenu jMenu2) {
+        this.jMenu2 = jMenu2;
+    }
+
+    public JMenu getMnCorretor() {
+        return mnCorretor;
+    }
+
+    public void setMnCorretor(JMenu mnCorretor) {
+        this.mnCorretor = mnCorretor;
+    }
+
+    public JMenuItem getMnCorretorNovo() {
+        return mnCorretorNovo;
+    }
+
+    public void setMnCorretorNovo(JMenuItem mnCorretorNovo) {
+        this.mnCorretorNovo = mnCorretorNovo;
+    }
+
+    public JMenuBar getMnPrincipal() {
+        return mnPrincipal;
+    }
+
+    public void setMnPrincipal(JMenuBar mnPrincipal) {
+        this.mnPrincipal = mnPrincipal;
+    }
+
+    public JMenu getMnSignUp() {
+        return mnSignUp;
+    }
+
+    public void setMnSignUp(JMenu mnSignUp) {
+        this.mnSignUp = mnSignUp;
+    }
+
+    public JPasswordField getPwdSenha() {
+        return pwdSenha;
+    }
+
+    public void setPwdSenha(JPasswordField pwdSenha) {
+        this.pwdSenha = pwdSenha;
+    }
+
+    public JTextField getTxtEmail() {
+        return txtEmail;
+    }
+
+    public void setTxtEmail(JTextField txtEmail) {
+        this.txtEmail = txtEmail;
+    }
+
+    public JRootPane getRootPane() {
+        return rootPane;
+    }
+
+    public void setRootPane(JRootPane rootPane) {
+        this.rootPane = rootPane;
+    }
+
+    public boolean isRootPaneCheckingEnabled() {
+        return rootPaneCheckingEnabled;
+    }
+
+    public void setRootPaneCheckingEnabled(boolean rootPaneCheckingEnabled) {
+        this.rootPaneCheckingEnabled = rootPaneCheckingEnabled;
+    }
+
+    public AccessibleContext getAccessibleContext() {
+        return accessibleContext;
+    }
+
+    public void setAccessibleContext(AccessibleContext accessibleContext) {
+        this.accessibleContext = accessibleContext;
+    }
+    public void usuarioLogado(FrameLogin frmLogin){
+        System.out.println("ok");
+    }
+   
     /**
      * Creates new form FrameLogin
      */
@@ -51,6 +185,7 @@ public class FrameLogin extends javax.swing.JFrame {
         jLabel2.setText("senha: ");
 
         btnLogin.setBackground(new java.awt.Color(0, 153, 51));
+        btnLogin.setForeground(new java.awt.Color(0, 102, 51));
         btnLogin.setText("Login");
         btnLogin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -136,10 +271,14 @@ public class FrameLogin extends javax.swing.JFrame {
 
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
         // TODO add your handling code here:
+        Corretor corretor = new Corretor();
+        Acesso acesso;
         try {
+            acesso = new Acesso();
             CorretorDAO corretorDAO = new CorretorDAO();
             boolean utilizador = corretorDAO.acessarContaCorretor(txtEmail.getText(), pwdSenha.getText());
             if(utilizador == true){
+                acesso.getNomeUsuario();
                 FrameDashboard dashboard = new FrameDashboard();
                 dashboard.setVisible(true); 
             }else{

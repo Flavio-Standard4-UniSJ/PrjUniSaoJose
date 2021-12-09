@@ -65,83 +65,61 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="0" attributes="0">
-              <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
-                      <Component id="btnAnterior" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="32767" attributes="0"/>
-                      <Component id="btnProximo" min="-2" max="-2" attributes="0"/>
-                  </Group>
+          <Group type="102" attributes="0">
+              <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
-                      <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
-                      <Component id="txtLocalidadeImovel" min="-2" pref="127" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="txtLocalidadeImovel" pref="171" max="32767" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
                           <Group type="102" attributes="0">
-                              <Component id="lblCaminhoArquivoImagem" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="lblArquivoImagem" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="102" attributes="0">
-                              <Component id="txtTipoImovel" min="-2" pref="129" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="8" max="-2" attributes="0"/>
+                              <Component id="cmbTipoImovel" min="-2" pref="152" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="btnPesquisarImovel" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
-              </Group>
-              <EmptySpace min="0" pref="24" max="32767" attributes="0"/>
-          </Group>
-          <Group type="102" attributes="0">
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="173" max="-2" attributes="0"/>
-                      <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="178" max="-2" attributes="0"/>
+                  <Group type="102" attributes="0">
+                      <EmptySpace min="174" pref="174" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
-                          <Component id="lblPreco" min="-2" max="-2" attributes="0"/>
-                          <Component id="lblLocal" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="lblDescricao" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblPreco" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblDescricao" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblLocal" min="-2" max="-2" attributes="0"/>
                       </Group>
+                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace pref="172" max="32767" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+          </Group>
+          <Group type="102" alignment="0" attributes="0">
+              <EmptySpace min="-2" pref="81" max="-2" attributes="0"/>
+              <Component id="lblImagem" min="-2" pref="270" max="-2" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
               <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="txtLocalidadeImovel" alignment="3" min="-2" pref="37" max="-2" attributes="0"/>
-                  <Component id="txtTipoImovel" alignment="3" min="-2" pref="37" max="-2" attributes="0"/>
                   <Component id="btnPesquisarImovel" alignment="3" min="-2" pref="37" max="-2" attributes="0"/>
+                  <Component id="cmbTipoImovel" alignment="3" min="-2" pref="37" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="105" max="32767" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="lblCaminhoArquivoImagem" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="lblArquivoImagem" alignment="3" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace min="-2" pref="110" max="-2" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Component id="lblImagem" min="-2" pref="262" max="-2" attributes="0"/>
+              <EmptySpace pref="30" max="32767" attributes="0"/>
               <Component id="lblDescricao" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
               <Component id="lblLocal" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="47" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
               <Component id="lblPreco" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="btnProximo" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
-                  <Component id="btnAnterior" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
-                  <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -154,22 +132,6 @@
         </Property>
         <Property name="text" type="java.lang.String" value="atlas"/>
       </Properties>
-    </Component>
-    <Component class="javax.swing.JButton" name="btnAnterior">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="&lt;"/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAnteriorActionPerformed"/>
-      </Events>
-    </Component>
-    <Component class="javax.swing.JButton" name="btnProximo">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="&gt;"/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnProximoActionPerformed"/>
-      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="lblDescricao">
       <Properties>
@@ -191,11 +153,6 @@
         <Property name="text" type="java.lang.String" value="Localidade"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="txtTipoImovel">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Tipo de Im&#xf3;vel"/>
-      </Properties>
-    </Component>
     <Component class="javax.swing.JButton" name="btnPesquisarImovel">
       <Properties>
         <Property name="text" type="java.lang.String" value="Pesquisar"/>
@@ -204,20 +161,22 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnPesquisarImovelActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JLabel" name="lblArquivoImagem">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="imagem.jpg"/>
-      </Properties>
+    <Component class="javax.swing.JLabel" name="lblImagem">
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabel2">
+    <Component class="javax.swing.JComboBox" name="cmbTipoImovel">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Pagina 0"/>
+        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+          <StringArray count="4">
+            <StringItem index="0" value="Apartamento"/>
+            <StringItem index="1" value="Casa"/>
+            <StringItem index="2" value="Terreno"/>
+            <StringItem index="3" value="Im&#xf3;vel na planta"/>
+          </StringArray>
+        </Property>
       </Properties>
-    </Component>
-    <Component class="javax.swing.JLabel" name="lblCaminhoArquivoImagem">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="caminho\u005c" containsInvalidXMLChars="true"/>
-      </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+      </AuxValues>
     </Component>
   </SubComponents>
 </Form>
