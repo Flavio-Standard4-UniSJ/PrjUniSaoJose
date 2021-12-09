@@ -6,6 +6,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
 
 public class ImovelDAO {
     private Connection conexao;
@@ -14,18 +16,15 @@ public class ImovelDAO {
         this.conexao = CriaConexao.getConexao();
     }
     public void anunciaImovel(Imovel imovel) throws SQLException{
-        String sql = "INSERT INTO Imovel (descricao, localidade, preco, imovel_categoria, caminho_arquivo, nome_arquivo, tamanho, imagem, id_corretor) VALUES (?,?,?,?,?,?,?,?,?)";
+        String sql = "INSERT INTO Imovel (descricao, localidade, preco, imovel_categoria, id_corretor, imagem) VALUES (?,?,?,?,?,?)";
         PreparedStatement preparador = conexao.prepareStatement(sql);
         preparador.setString(1, imovel.getDescricao());
         preparador.setString(2, imovel.getLocalidade());
         preparador.setFloat(3, imovel.getPreco());
         preparador.setString(4, imovel.getImovel_categoria());
-        preparador.setString(5, imovel.getCaminho_arquivo());
-        preparador.setString(6, imovel.getNome_arquivo());
-        preparador.setString(7, imovel.getTamanho());
-        preparador.setString(8, imovel.getImagem());
-        preparador.setInt(9, imovel.getIdCorretor());
-        preparador.execute();
+        preparador.setInt(5, imovel.getId_corretor());
+        preparador.setBytes(6, imovel.getImagem());
+        preparador.executeUpdate();
         preparador.close();
         System.out.println("Imóvel anunciado com sucesso");
     }
@@ -47,7 +46,7 @@ public class ImovelDAO {
     
     public Imovel pesquisarImovel(String localidade, String imovel_categoria) throws Exception{
         Imovel imovel = new Imovel();
-        String sql = ("SELECT * FROM Imovel WHERE localidade ILIKE '%?%' AND imovel_categoria ILIKE '%?%'");
+        String sql = ("SELECT * FROM Imovel WHERE localidade = ? AND imovel_categoria = ?");
         PreparedStatement preparador = this.conexao.prepareStatement(sql);
         preparador.setString(1, localidade);
         preparador.setString(2, imovel_categoria);
@@ -57,26 +56,59 @@ public class ImovelDAO {
             imovel.setLocalidade(rs.getString("localidade"));
             imovel.setPreco(rs.getFloat("preco"));
             imovel.setImovel_categoria(rs.getString("imovel_categoria"));
-            imovel.setNome_arquivo(rs.getString("nome_arquivo"));
-            imovel.setCaminho_arquivo(rs.getString("caminho_arquivo"));
-            rs.close();
-            preparador.close();
+            imovel.setImagem(rs.getBytes("imagem"));
+        }else{
+            JOptionPane.showMessageDialog(null, "nenhum imóvel anunciado por aqui até agora.");
+            imovel = null;    
         }
+        rs.close();
+        preparador.close();
         return imovel; 
     }
-    public Imovel listaImovel(Imovel imovel) throws Exception{
+    public ArrayList<Imovel> listaImovel() throws Exception{
+        ArrayList<Imovel> imoveis = new ArrayList<Imovel>();
         String sql = ("SELECT * FROM Imovel");
         PreparedStatement preparador = this.conexao.prepareStatement(sql);
         ResultSet rs = preparador.executeQuery();
-        if(rs.next()){
+        while(rs.next()){
+            Imovel imovel = new Imovel();
             imovel.setDescricao(rs.getString("descricao"));
             imovel.setLocalidade(rs.getString("localidade"));
             imovel.setPreco(rs.getFloat("preco"));
             imovel.setImovel_categoria(rs.getString("imovel_categoria"));
-            
-            rs.close();
-            preparador.close();
+            imovel.setImagem(rs.getBytes("imagem"));
+            imoveis.add(imovel);
         }
-        return imovel; 
+        rs.close();
+        preparador.close();
+        return imoveis; 
+    }
+    public ArrayList<Imovel> listaTodos(int start, int total) throws Exception{
+        ArrayList<Imovel> imoveis = new ArrayList<Imovel>(); 
+        String sql = ("SELECT * FROM Imovel LIMIT "+(start)+" OFFSET "+total);
+        PreparedStatement preparador = this.conexao.prepareStatement(sql);
+        ResultSet rs = preparador.executeQuery();
+        while(rs.next()){
+            Imovel imovel = new Imovel();
+            imovel.setDescricao(rs.getString("descricao"));
+            imovel.setLocalidade(rs.getString("localidade"));
+            imovel.setPreco(rs.getFloat("preco"));
+            imovel.setImovel_categoria(rs.getString("imovel_categoria"));
+            imovel.setImagem(rs.getBytes("imagem"));
+            imoveis.add(imovel);
+        }
+        rs.close();
+        preparador.close();
+        return imoveis; 
+    }
+    public int countImovelPaginacao(Imovel imovel) throws Exception{
+        String sql = ("SELECT COUNT(*) AS conta_imoveis FROM Imovel");
+        PreparedStatement preparador = this.conexao.prepareStatement(sql);
+        ResultSet rs = preparador.executeQuery();
+        if(rs.next()){
+            int total_rows = Integer.parseInt(rs.getString("conta_imoveis"));
+            return total_rows;
+        }
+        return 0;   
     }
 }
