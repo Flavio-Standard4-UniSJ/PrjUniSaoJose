@@ -17,6 +17,10 @@ public class Acesso {
         dataAcesso = sdf2.format(new Date());
         horaAcesso = sdf.format(new Date().getTime());
     }
+    public Acesso(int id, String nomeUsuario){
+        this.id=id;
+        this.nomeUsuario=nomeUsuario;
+    }
     
     public int getId(){ return id; }
     public String getDataAcesso(){ return dataAcesso; }
