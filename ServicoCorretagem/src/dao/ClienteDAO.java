@@ -55,7 +55,7 @@ public class ClienteDAO {
         PreparedStatement preparador = this.conexao.prepareStatement(sql);
         preparador.setString(1, nome);
         ResultSet rs = preparador.executeQuery();
-        if(rs.next()){
+        while(rs.next()){
             cliente.setNome(rs.getString("nome"));
             cliente.setSobrenome(rs.getString("sobrenome"));
             cliente.setNascimento(rs.getString("nascimento"));
