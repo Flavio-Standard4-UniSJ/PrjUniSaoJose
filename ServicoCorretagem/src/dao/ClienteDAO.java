@@ -6,6 +6,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
 import servico.Acesso;
 
 public class ClienteDAO {
@@ -51,9 +53,33 @@ public class ClienteDAO {
     
     public Cliente pesquisarClienteNome(String nome) throws Exception{
         Cliente cliente = new Cliente();
-        String sql = ("SELECT * FROM Cliente WHERE nome = ?");
+        String sql = ("SELECT * FROM Cliente WHERE nome LIKE ?");
         PreparedStatement preparador = this.conexao.prepareStatement(sql);
-        preparador.setString(1, nome);
+        preparador.setString(1, "%"+nome+"%");
+        ResultSet rs = preparador.executeQuery();
+        if(rs.next()){
+            cliente.setNome(rs.getString("nome"));
+            cliente.setSobrenome(rs.getString("sobrenome"));
+            cliente.setNascimento(rs.getString("nascimento"));
+            cliente.setEmail(rs.getString("email"));
+            cliente.setTelefone(rs.getString("telefone"));
+            cliente.setProfissao(rs.getString("profissao"));
+            cliente.setSalario(rs.getFloat("salario"));          
+        }else{
+            JOptionPane.showMessageDialog(null, "nenhum cliente até agora.");
+            cliente = null;    
+        }
+        rs.close();
+        preparador.close();
+        return cliente; 
+    }
+    
+     public  ArrayList <Cliente> listarClientes(int id_corretor) throws Exception{
+        ArrayList <Cliente> lista = new ArrayList <>(); 
+        Cliente cliente = new Cliente();
+        String sql = ("SELECT * FROM Cliente where id_corretor=?");
+        PreparedStatement preparador = this.conexao.prepareStatement(sql);
+        preparador.setInt(1, cliente.getId_corretor());
         ResultSet rs = preparador.executeQuery();
         while(rs.next()){
             cliente.setNome(rs.getString("nome"));
@@ -62,10 +88,13 @@ public class ClienteDAO {
             cliente.setEmail(rs.getString("email"));
             cliente.setTelefone(rs.getString("telefone"));
             cliente.setProfissao(rs.getString("profissao"));
-            cliente.setSalario(rs.getFloat("salario"));
-            rs.close();
-            preparador.close();
+            cliente.setSalario(rs.getFloat("salario")); 
+            lista.add(cliente);
         }
-        return cliente; 
+        rs.close();
+        preparador.close();
+        return lista; 
     }
+    
 }
+

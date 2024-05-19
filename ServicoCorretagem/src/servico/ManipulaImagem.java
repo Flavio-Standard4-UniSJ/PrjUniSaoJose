@@ -1,4 +1,3 @@
-
 package servico;
 
 import java.awt.Graphics2D;
@@ -63,7 +62,7 @@ public class ManipulaImagem {
         return baos.toByteArray();
     }
     
-    public static void exigirImagemLabel(byte[] minhaImagem, javax.swing.JLabel label){
+    public static void exibirImagemLabel(byte[] minhaImagem, javax.swing.JLabel label){
         if(minhaImagem != null){
             InputStream input = new ByteArrayInputStream(minhaImagem);
             try{

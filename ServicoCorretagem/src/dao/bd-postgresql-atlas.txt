@@ -1,0 +1,58 @@
+
+
+
+--------------------------------------------------------
+CREATE DATABASE aplicacao_atlas;
+CREATE TABLE Corretor (
+	id serial PRIMARY KEY,
+	nome VARCHAR(50),
+	sobrenome VARCHAR(50),
+	nascimento  VARCHAR(20),
+	ativo int CHECK(ativo = 0 OR ativo = 1),
+	creci  VARCHAR(20),
+	cpf  VARCHAR(20) UNIQUE,
+	email  VARCHAR(100) UNIQUE,
+	identidade  VARCHAR(20) UNIQUE,
+	senha  VARCHAR(200),
+	pin  VARCHAR(200),	
+	telefone  VARCHAR(20)
+);
+
+CREATE TABLE cliente (
+	id serial PRIMARY KEY,
+	nome VARCHAR(50),
+	sobrenome VARCHAR(50),
+	nascimento  VARCHAR(20),
+	cpf  VARCHAR(20) UNIQUE,
+	email  VARCHAR(100) UNIQUE,
+	identidade  VARCHAR(20) UNIQUE,
+	telefone  VARCHAR(20),
+	profissao VARCHAR(50),
+	salario FLOAT,
+	id_corretor integer references corretor(id) not null
+);
+
+CREATE TABLE dependentes (
+	id serial PRIMARY KEY,
+	nome VARCHAR(50),
+	sobrenome VARCHAR(50),
+	nascimento  VARCHAR(20),
+	cpf  VARCHAR(20) UNIQUE,
+	identidade  VARCHAR(20) UNIQUE,
+	id_cliente int REFERENCES cliente(id) NOT NULL
+);
+
+create table imovel (
+	id_imovel serial primary key,
+	descricao varchar(100) not null,
+	localidade varchar(200) not null,
+	preco float not null,
+	imovel_categoria varchar(100) not null,
+	id_corretor integer references corretor(id),
+	imagem bytea
+);
+-----------------------------------------------------------
+
+INSERT INTO Corretor (nome, sobrenome, nascimento, ativo, creci, cpf, email, identidade, senha, pin, telefone) VALUES ('Maria','Das Dores','2000-08-11',1,'0001','8018753718','maria@teste.com','179207514',md5('123456789'),'123456789','21980804000')
+alter table cliente add column id_corretor integer;
+alter table cliente add constraint id_corretor foreign key (id_corretor) references corretor(id);

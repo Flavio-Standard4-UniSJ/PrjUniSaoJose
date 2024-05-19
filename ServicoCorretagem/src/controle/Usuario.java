@@ -1,4 +1,3 @@
-
 package controle;
 
 public abstract class Usuario {

@@ -5,6 +5,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import javax.swing.JOptionPane;
 import servico.Acesso;
 
 
@@ -53,7 +54,7 @@ public class CorretorDAO {
     }
     
     public void alterarLoginCorretor(Corretor corretor) throws Exception{
-        String sql = "UPDATE Corretor SET email=?, senha=md5(?) WHERE nome = ? AND pin=?";        
+        String sql = "UPDATE Corretor senha=md5(?) WHERE nome = ? AND email=?";        
         PreparedStatement preparador = this.conexao.prepareStatement(sql);
         preparador.setString(1, corretor.getEmail());
         preparador.setString(2, corretor.getSenha());
@@ -61,49 +62,41 @@ public class CorretorDAO {
         preparador.execute();
         preparador.close();
     }
-    
-    public void desativarContaCorretor(Corretor corretor) throws Exception{
-        String sql = ("UPDATE Corretor SET ativo=0 WHERE nome = ?");
+    public void alterarContaCorretor(Corretor corretor) throws Exception{
+        String sql = "UPDATE Corretor SET sobrenome=?, telefone=? WHERE email = ?";        
         PreparedStatement preparador = this.conexao.prepareStatement(sql);
-        preparador.setInt(1, corretor.getAtivo());
-        preparador.setString(2, corretor.getNome());
+        preparador.setString(1, corretor.getSobrenome());
+        preparador.setString(2, corretor.getTelefone());
+        preparador.setString(3, corretor.getEmail());
         preparador.execute();
         preparador.close();
+        System.out.println("Corretor alterado com sucesso");
     }
-    
-    public void alterarContaCorretor(Corretor corretor) throws Exception{
-        String sql = ("UPDATE Corretor SET email=?, telefone=? WHERE nome = ?");
+    public Corretor acessarContaCorretor(String email, String senha) throws Exception{
+        String sql = "SELECT * FROM Corretor WHERE email=? AND senha=md5(?)";
+        PreparedStatement preparador = this.conexao.prepareStatement(sql);
+        preparador.setString(1, email);
+        preparador.setString(2, senha);
+        ResultSet resultSet = preparador.executeQuery();
+        if (resultSet != null) {
+            Corretor corretor = new Corretor();
+            if (resultSet.next()) {               
+                corretor.setNome(resultSet.getString("nome"));
+                corretor.setEmail(resultSet.getString("email"));
+                corretor.setSenha(resultSet.getString("senha")); 
+                return corretor;
+            }
+        }else{
+            JOptionPane.showMessageDialog(null, "Dados incorretos!");
+        }
+        preparador.close(); 
+        return null;  
+    }
+   public void desativarContaCorretor(Corretor corretor) throws Exception{
+        String sql = "DELETE FROM Corretor WHERE email=?";        
         PreparedStatement preparador = this.conexao.prepareStatement(sql);
         preparador.setString(1, corretor.getEmail());
-        preparador.setString(2, corretor.getTelefone());
-        preparador.setString(3, corretor.getNome());
-        System.out.println(corretor.getEmail());
-        System.out.println(corretor.getTelefone());
-        System.out.println(corretor.getNome());
         preparador.execute();
-        preparador.close();        
-    }
-      
-    public boolean acessarContaCorretor(String email, String senha) throws Exception{
-        boolean status = false;
-        if(!email.isEmpty() && !senha.isEmpty()) {
-            String sql = ("SELECT * FROM Corretor WHERE email = ? AND senha = md5(?)");
-            PreparedStatement preparador = this.conexao.prepareStatement(sql);
-            preparador.setString(1, email);
-            preparador.setString(2, senha);
-            ResultSet rs = preparador.executeQuery();
-            if(rs.next()){
-                Corretor corretor = new Corretor();
-                corretor.setNome(rs.getString("nome"));
-                corretor.setEmail(rs.getString("email"));
-                corretor.setSenha(rs.getString("senha"));
-                corretor.setAtivo(rs.getInt("ativo"));
-                status = true;
-                registroLogin(corretor.getNome());
-            }
-            rs.close();
-            preparador.close();
-        }
-        return status;
-    }
+        preparador.close();
+    } 
 }

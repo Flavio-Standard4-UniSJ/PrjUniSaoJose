@@ -1,4 +1,3 @@
-
 package controle;
 
 
@@ -6,11 +5,12 @@ public class Cliente extends Usuario {
     private String cpf, identidade, profissao;
     private float salario;
     private String email, telefone;
+    private int id_corretor;
     
     public Cliente(){
         super();
     }
-    public Cliente(String cpf, String identidade, String profissao, float salario, String email, String telefone) {
+    public Cliente(String cpf, String identidade, String profissao, float salario, String email, String telefone,int id_corretor) {
         super();
         this.cpf = cpf;
         this.identidade = identidade;
@@ -18,6 +18,7 @@ public class Cliente extends Usuario {
         this.salario = salario;
         this.email = email;
         this.telefone = telefone;
+        this.id_corretor=id_corretor;
     }
 
     public String getCpf() {
@@ -66,6 +67,14 @@ public class Cliente extends Usuario {
 
     public void setTelefone(String telefone) {
         this.telefone = telefone;
+    }
+
+    public int getId_corretor() {
+        return id_corretor;
+    }
+
+    public void setId_corretor(int id_corretor) {
+        this.id_corretor = id_corretor;
     }
     
     

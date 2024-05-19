@@ -3,12 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/miserere/Documents/NetBeansProjects/ServicoCorretagem/src/tela/FrameNovoCorretor.java</file>
-            <file>file:/C:/Users/miserere/Documents/NetBeansProjects/ServicoCorretagem/src/dao/CriaConexao.java</file>
-            <file>file:/C:/Users/miserere/Documents/NetBeansProjects/ServicoCorretagem/src/controle/Corretor.java</file>
-            <file>file:/C:/Users/miserere/Documents/NetBeansProjects/ServicoCorretagem/src/tela/TelaCorretor.java</file>
-            <file>file:/C:/Users/miserere/Documents/NetBeansProjects/ServicoCorretagem/src/dao/CorretorDAO.java</file>
-            <file>file:/C:/Users/miserere/Documents/NetBeansProjects/ServicoCorretagem/src/controle/Usuario.java</file>
+            <file>file:/C:/Users/Samsung/OneDrive/Documentos/NetBeansProjects/PrjUniSaoJose/ServicoCorretagem/src/tela/FrameNovoCliente.java</file>
+            <file>file:/C:/Users/Samsung/OneDrive/Documentos/NetBeansProjects/PrjUniSaoJose/ServicoCorretagem/src/tela/FrameDashboard.java</file>
+            <file>file:/C:/Users/Samsung/OneDrive/Documentos/NetBeansProjects/PrjUniSaoJose/ServicoCorretagem/src/dao/ClienteDAO.java</file>
+            <file>file:/C:/Users/Samsung/OneDrive/Documentos/NetBeansProjects/PrjUniSaoJose/ServicoCorretagem/src/tela/TelaCorretor.java</file>
         </group>
     </open-files>
 </project-private>
