@@ -259,7 +259,7 @@ public class FrameNovoCliente extends javax.swing.JFrame {
     }//GEN-LAST:event_txtEmailActionPerformed
 
     private void btnNovoCorretorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNovoCorretorActionPerformed
-        int id = 5; //pegar identificador do corretor logado
+        int id = 1; //pegar identificador do corretor logado
         Cliente cliente = new Cliente();
         cliente.setNome(txtNome.getText());
         cliente.setSobrenome(txtSobrenome.getText());

@@ -319,7 +319,7 @@ public class FrameDashboard extends javax.swing.JFrame {
     private void btnSalvarDadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarDadosActionPerformed
         try {
             Corretor corretor = new Corretor();
-            int id_corretor = 5; //corretor.getId();
+            int id_corretor = 1; //corretor.getId();
             Imovel imovel = new Imovel();
             imovel.setDescricao(txtDescricao.getText());
             imovel.setLocalidade(txtLocal.getText());
