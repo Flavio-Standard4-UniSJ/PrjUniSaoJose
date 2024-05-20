@@ -72,7 +72,7 @@ public class CorretorDAO {
         preparador.close();
         System.out.println("Corretor alterado com sucesso");
     }
-    public Corretor acessarContaCorretor(String email, String senha) throws Exception{
+    public Corretor acessarContaCorretor(String email, String senha) throws SQLException{
         String sql = "SELECT * FROM Corretor WHERE email=? AND senha=md5(?)";
         PreparedStatement preparador = this.conexao.prepareStatement(sql);
         preparador.setString(1, email);

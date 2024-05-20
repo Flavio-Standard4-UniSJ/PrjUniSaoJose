@@ -38,6 +38,7 @@ public class FrameDashboard extends javax.swing.JFrame {
         lblCorretorLogado.setText("Bem-vindo, " + corretor.getNome());
         // Adicione outras configurações que dependem do objeto corretor aqui
     }
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
