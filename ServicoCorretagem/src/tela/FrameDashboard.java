@@ -20,10 +20,24 @@ import servico.ManipulaImagem;
 public class FrameDashboard extends javax.swing.JFrame {
 
    BufferedImage imagem; //tipo variavel armazena imagem em bytes 
-        
+    private Corretor corretor;
+      
+    public FrameDashboard(Corretor corretor) {
+        this.corretor = corretor;
+        initComponents();
+        customInitComponents();
+    }
+    
     public FrameDashboard() {
         initComponents();
     } 
+    
+    private void customInitComponents() {
+        // Aqui você pode adicionar código para configurar os componentes
+        // com base no objeto corretor, por exemplo:
+        lblCorretorLogado.setText("Bem-vindo, " + corretor.getNome());
+        // Adicione outras configurações que dependem do objeto corretor aqui
+    }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -56,7 +70,7 @@ public class FrameDashboard extends javax.swing.JFrame {
         mnCorretorNovoCliente = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jLabel1.setText("DASHBOARD");
 
@@ -400,7 +414,7 @@ public class FrameDashboard extends javax.swing.JFrame {
             }
         });
     }
-
+    
     public static void inicializar(){
         FrameDashboard dashboard = new FrameDashboard();
         dashboard.setVisible(true);

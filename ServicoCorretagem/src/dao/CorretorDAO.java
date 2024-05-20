@@ -90,8 +90,10 @@ public class CorretorDAO {
             JOptionPane.showMessageDialog(null, "Dados incorretos!");
         }
         preparador.close(); 
-        return null;  
+        return null;
     }
+    
+    
    public void desativarContaCorretor(Corretor corretor) throws Exception{
         String sql = "DELETE FROM Corretor WHERE email=?";        
         PreparedStatement preparador = this.conexao.prepareStatement(sql);
