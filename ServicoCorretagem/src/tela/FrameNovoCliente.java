@@ -11,14 +11,32 @@ import dao.CorretorDAO;
 import java.sql.SQLException;
 
 public class FrameNovoCliente extends javax.swing.JFrame {
-
+    private Corretor corretor;
     /**
      * Creates new form FrameNovoCliente
      */
+    public FrameNovoCliente(Corretor corretor) {
+        this.corretor = corretor;
+        initComponents();
+        customInitComponents();
+    }
     public FrameNovoCliente() {
         initComponents();
     }
 
+    private void customInitComponents() {
+        // Aqui você pode adicionar código para configurar os componentes
+        // com base no objeto corretor, por exemplo:
+        if (corretor != null) {
+            System.out.println("ID: "+ corretor.getId());
+            System.out.println("Dados do corretor: "+ corretor.getEmail());
+            //System.out.println("PIN: "+ corretor.getPin());
+            //System.out.println("Nº do CRECI: "+corretor.getCreci());
+            System.out.println("Nome: "+corretor.getNome());
+            System.out.println("Sobrenome: "+ corretor.getSobrenome());
+        }
+        // Adicione outras configurações que dependem do objeto corretor aqui
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -46,7 +64,7 @@ public class FrameNovoCliente extends javax.swing.JFrame {
         jLabel12 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         txtSalario = new javax.swing.JTextField();
-        btnNovoCorretor = new javax.swing.JButton();
+        btnNovoClienteCorretor = new javax.swing.JButton();
         txtTelefone = new javax.swing.JTextField();
         mnPrincipal = new javax.swing.JMenuBar();
         mnSignUp = new javax.swing.JMenu();
@@ -90,10 +108,10 @@ public class FrameNovoCliente extends javax.swing.JFrame {
 
         jLabel6.setText("salario");
 
-        btnNovoCorretor.setText("Salvar Dados");
-        btnNovoCorretor.addActionListener(new java.awt.event.ActionListener() {
+        btnNovoClienteCorretor.setText("Salvar Dados");
+        btnNovoClienteCorretor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnNovoCorretorActionPerformed(evt);
+                btnNovoClienteCorretorActionPerformed(evt);
             }
         });
 
@@ -146,7 +164,7 @@ public class FrameNovoCliente extends javax.swing.JFrame {
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                             .addGap(249, 249, 249)
-                            .addComponent(btnNovoCorretor))
+                            .addComponent(btnNovoClienteCorretor))
                         .addGroup(layout.createSequentialGroup()
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(jLabel5)
@@ -233,7 +251,7 @@ public class FrameNovoCliente extends javax.swing.JFrame {
                         .addComponent(jLabel6)
                         .addComponent(txtSalario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGap(30, 30, 30)
-                    .addComponent(btnNovoCorretor)
+                    .addComponent(btnNovoClienteCorretor)
                     .addContainerGap(85, Short.MAX_VALUE)))
         );
 
@@ -258,8 +276,8 @@ public class FrameNovoCliente extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtEmailActionPerformed
 
-    private void btnNovoCorretorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNovoCorretorActionPerformed
-        int id = 1; //pegar identificador do corretor logado
+    private void btnNovoClienteCorretorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNovoClienteCorretorActionPerformed
+        int id = corretor.getId(); //pegar identificador do corretor logado
         Cliente cliente = new Cliente();
         cliente.setNome(txtNome.getText());
         cliente.setSobrenome(txtSobrenome.getText());
@@ -279,7 +297,7 @@ public class FrameNovoCliente extends javax.swing.JFrame {
             ex.getMessage();
         }
 
-    }//GEN-LAST:event_btnNovoCorretorActionPerformed
+    }//GEN-LAST:event_btnNovoClienteCorretorActionPerformed
 
     private void txtTelefoneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTelefoneActionPerformed
         // TODO add your handling code here:
@@ -321,7 +339,7 @@ public class FrameNovoCliente extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnNovoCorretor;
+    private javax.swing.JButton btnNovoClienteCorretor;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
