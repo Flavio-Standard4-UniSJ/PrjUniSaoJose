@@ -15,14 +15,14 @@ public class ImovelDAO {
     public ImovelDAO() throws Exception {
         this.conexao = CriaConexao.getConexao();
     }
-    public void anunciaImovel(Imovel imovel) throws SQLException{
+    public void anunciaImovel(Imovel imovel, int id_corretor) throws SQLException{
         String sql = "INSERT INTO Imovel (descricao, localidade, preco, imovel_categoria, id_corretor, imagem) VALUES (?,?,?,?,?,?)";
         PreparedStatement preparador = conexao.prepareStatement(sql);
         preparador.setString(1, imovel.getDescricao());
         preparador.setString(2, imovel.getLocalidade());
         preparador.setFloat(3, imovel.getPreco());
         preparador.setString(4, imovel.getImovel_categoria());
-        preparador.setInt(5, imovel.getId_corretor());
+        preparador.setInt(5, id_corretor);
         preparador.setBytes(6, imovel.getImagem());
         preparador.executeUpdate();
         preparador.close();

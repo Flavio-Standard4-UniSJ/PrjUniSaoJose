@@ -88,13 +88,14 @@ public class CorretorDAO {
                 corretor.setSenha(resultSet.getString("senha"));
                 corretor.setCpf(resultSet.getString("cpf"));
                 corretor.setCreci(resultSet.getString("creci"));
+                return corretor;
             }
         }else{
             JOptionPane.showMessageDialog(null, "Dados incorretos!");
             return null;
         }
         preparador.close(); 
-        return corretor;
+        return null;  
     }
     
     

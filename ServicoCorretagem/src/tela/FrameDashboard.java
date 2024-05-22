@@ -364,7 +364,6 @@ public class FrameDashboard extends javax.swing.JFrame {
 
     private void btnSalvarDadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarDadosActionPerformed
         try {
-            Corretor corretor = new Corretor();
             int id_corretor = corretor.getId(); //corretor.getId();
             Imovel imovel = new Imovel();
             imovel.setDescricao(txtDescricao.getText());
@@ -383,7 +382,7 @@ public class FrameDashboard extends javax.swing.JFrame {
             imovel.setImagem(ManipulaImagem.getImgBytes(imagem));
 
             ImovelDAO imovelDAO = new ImovelDAO();
-            imovelDAO.anunciaImovel(imovel);
+            imovelDAO.anunciaImovel(imovel, id_corretor);
 
         } catch(SQLException ex) {
             ex.printStackTrace();
