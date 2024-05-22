@@ -78,19 +78,23 @@ public class CorretorDAO {
         preparador.setString(1, email);
         preparador.setString(2, senha);
         ResultSet resultSet = preparador.executeQuery();
+         Corretor corretor = new Corretor();
         if (resultSet != null) {
-            Corretor corretor = new Corretor();
-            if (resultSet.next()) {               
+            if (resultSet.next()) { 
+                corretor.setId(resultSet.getInt("id"));
                 corretor.setNome(resultSet.getString("nome"));
+                corretor.setSobrenome(resultSet.getString("sobrenome"));
                 corretor.setEmail(resultSet.getString("email"));
-                corretor.setSenha(resultSet.getString("senha")); 
-                return corretor;
+                corretor.setSenha(resultSet.getString("senha"));
+                corretor.setCpf(resultSet.getString("cpf"));
+                corretor.setCreci(resultSet.getString("creci"));
             }
         }else{
             JOptionPane.showMessageDialog(null, "Dados incorretos!");
+            return null;
         }
         preparador.close(); 
-        return null;
+        return corretor;
     }
     
     

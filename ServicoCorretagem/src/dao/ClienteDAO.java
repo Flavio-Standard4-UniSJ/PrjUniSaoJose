@@ -51,11 +51,12 @@ public class ClienteDAO {
         preparador.close();
     }
     
-    public Cliente pesquisarClienteNome(String nome) throws Exception{
+    public Cliente pesquisarClienteNome(String nome, int id_corretor) throws Exception{
         Cliente cliente = new Cliente();
-        String sql = ("SELECT * FROM Cliente WHERE nome LIKE ?");
+        String sql = ("SELECT * FROM Cliente WHERE nome LIKE ? AND id_corretor=?");
         PreparedStatement preparador = this.conexao.prepareStatement(sql);
-        preparador.setString(1, "%"+nome+"%");
+        preparador.setString(1, "%"+nome+"%");        
+        preparador.setInt(2, id_corretor);
         ResultSet rs = preparador.executeQuery();
         if(rs.next()){
             cliente.setNome(rs.getString("nome"));
@@ -79,7 +80,7 @@ public class ClienteDAO {
         Cliente cliente = new Cliente();
         String sql = ("SELECT * FROM Cliente where id_corretor=?");
         PreparedStatement preparador = this.conexao.prepareStatement(sql);
-        preparador.setInt(1, cliente.getId_corretor());
+        preparador.setInt(1, id_corretor);
         ResultSet rs = preparador.executeQuery();
         while(rs.next()){
             cliente.setNome(rs.getString("nome"));
