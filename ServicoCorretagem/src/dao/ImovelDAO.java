@@ -29,17 +29,21 @@ public class ImovelDAO {
         System.out.println("Imóvel anunciado com sucesso");
     }
 
-    public void excluirAnuncioImovel(String nome) throws Exception{
-        String sql = ("DELETE FROM Imovel WHERE nome = '"+nome+"'");
+    public void excluirAnuncioImovel(String nome, int id_corretor) throws Exception{
+        String sql = ("DELETE FROM Imovel WHERE nome = '"+nome+"' AND id_corrstor=?");
         PreparedStatement preparador = this.conexao.prepareStatement(sql);
+        preparador.setString(1, nome);
+        preparador.setInt(2, id_corretor);
         preparador.execute();
         preparador.close();
     }
     
-    public void alterarAnuncioImovel(Imovel imovel) throws Exception{
-        String sql = "UPDATE Imovel SET preco=? WHERE nome = ?";        
+    public void alterarAnuncioImovel(Imovel imovel,String nome, int id_corretor) throws Exception{
+        String sql = "UPDATE Imovel SET preco=? WHERE nome LIKE ? AND id_corretor = ?";        
         PreparedStatement preparador = this.conexao.prepareStatement(sql);
         preparador.setFloat(1, imovel.getPreco());
+        preparador.setString(2,"%"+ nome +"%");
+        preparador.setInt(3, id_corretor);
         preparador.execute();
         preparador.close();
     }
