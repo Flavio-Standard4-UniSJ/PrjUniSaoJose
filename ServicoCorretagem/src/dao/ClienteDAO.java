@@ -77,12 +77,13 @@ public class ClienteDAO {
     
      public  ArrayList <Cliente> listarClientes(int id_corretor) throws Exception{
         ArrayList <Cliente> lista = new ArrayList <>(); 
-        Cliente cliente = new Cliente();
         String sql = ("SELECT * FROM Cliente where id_corretor=?");
         PreparedStatement preparador = this.conexao.prepareStatement(sql);
         preparador.setInt(1, id_corretor);
         ResultSet rs = preparador.executeQuery();
         while(rs.next()){
+            Cliente cliente = new Cliente();
+            cliente.setId(rs.getInt("id"));
             cliente.setNome(rs.getString("nome"));
             cliente.setSobrenome(rs.getString("sobrenome"));
             cliente.setNascimento(rs.getString("nascimento"));

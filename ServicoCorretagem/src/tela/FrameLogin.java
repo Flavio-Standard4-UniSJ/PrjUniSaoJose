@@ -43,7 +43,7 @@ public class FrameLogin extends javax.swing.JFrame {
 
         jLabel2.setText("senha: ");
 
-        btnLogin.setBackground(new java.awt.Color(0, 153, 51));
+        btnLogin.setBackground(new java.awt.Color(153, 255, 153));
         btnLogin.setForeground(new java.awt.Color(0, 102, 51));
         btnLogin.setText("Login");
         btnLogin.addActionListener(new java.awt.event.ActionListener() {

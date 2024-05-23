@@ -9,6 +9,7 @@ import controle.Corretor;
 import dao.ClienteDAO;
 import dao.CorretorDAO;
 import java.sql.SQLException;
+import javax.swing.JFrame;
 
 public class FrameNovoCliente extends javax.swing.JFrame {
     private Corretor corretor;
@@ -22,6 +23,10 @@ public class FrameNovoCliente extends javax.swing.JFrame {
     }
     public FrameNovoCliente() {
         initComponents();
+        setTitle("Novo Cliente");
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        setLocationRelativeTo(null); // Centraliza a janela
+        setLayout(null);
     }
 
     private void customInitComponents() {

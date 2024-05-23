@@ -5,6 +5,7 @@
 package tela;
 
 import dao.ImovelDAO;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import servico.Imovel;
 import servico.ManipulaImagem;
@@ -20,6 +21,10 @@ public class TelaCorretor extends javax.swing.JFrame {
      */
     public TelaCorretor() {
         initComponents();
+        setTitle("Principal");
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        setLocationRelativeTo(null); // Centraliza a janela
+        setLayout(null);
     }
 
     /**
@@ -67,6 +72,11 @@ public class TelaCorretor extends javax.swing.JFrame {
         jLabel1.setText("Atlas");
 
         txtLocalidadeImovel.setText("localidade");
+        txtLocalidadeImovel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtLocalidadeImovelActionPerformed(evt);
+            }
+        });
 
         cmbTipoImovel.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Apartamento", "Casa", "Terreno", "Imóvel na planta" }));
 
@@ -126,9 +136,6 @@ public class TelaCorretor extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(btnPesquisarImovel, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(166, 166, 166)
-                        .addComponent(jLabel1))
-                    .addGroup(layout.createSequentialGroup()
                         .addGap(101, 101, 101)
                         .addComponent(lblImagem, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
@@ -143,27 +150,26 @@ public class TelaCorretor extends javax.swing.JFrame {
                                     .addComponent(lblDescricao1)
                                     .addComponent(lblLocal1))
                                 .addGap(18, 18, 18)))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(lblLocal, javax.swing.GroupLayout.DEFAULT_SIZE, 269, Short.MAX_VALUE)
-                            .addComponent(lblPreco, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                .addContainerGap(23, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(lblDescricao, javax.swing.GroupLayout.PREFERRED_SIZE, 249, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(lblPreco, javax.swing.GroupLayout.PREFERRED_SIZE, 269, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblLocal, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblDescricao, javax.swing.GroupLayout.DEFAULT_SIZE, 292, Short.MAX_VALUE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(205, 205, 205)
+                        .addComponent(jLabel1)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(18, 18, 18)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(14, 14, 14)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(txtLocalidadeImovel, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(cmbTipoImovel, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(7, 7, 7)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtLocalidadeImovel, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cmbTipoImovel, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnPesquisarImovel, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(30, 30, 30)
-                .addComponent(lblImagem, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(44, 44, 44)
+                .addComponent(lblImagem, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(26, 26, 26)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -177,7 +183,7 @@ public class TelaCorretor extends javax.swing.JFrame {
                             .addComponent(lblPreco, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(lblPreco1)))
                     .addComponent(lblDescricao, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(31, Short.MAX_VALUE))
+                .addContainerGap(23, Short.MAX_VALUE))
         );
 
         pack();
@@ -208,6 +214,10 @@ public class TelaCorretor extends javax.swing.JFrame {
         FrameNovoCorretor frameRegistro = new FrameNovoCorretor();
         frameRegistro.setVisible(true);
     }//GEN-LAST:event_mnCorretorNovoActionPerformed
+
+    private void txtLocalidadeImovelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtLocalidadeImovelActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtLocalidadeImovelActionPerformed
 
     /**
      * @param args the command line arguments

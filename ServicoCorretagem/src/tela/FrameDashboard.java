@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import servico.Acesso;
 import servico.Imovel;
@@ -21,12 +22,22 @@ public class FrameDashboard extends javax.swing.JFrame {
 
    BufferedImage imagem; //tipo variavel armazena imagem em bytes 
     private Corretor corretor;
+    private Cliente cliente;
       
     public FrameDashboard(Corretor corretor) {
         this.corretor = corretor;
         initComponents();
         customInitComponents();
+        setTitle("Dashboard");
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        setLocationRelativeTo(null); // Centraliza a janela
+        setLayout(null);
     }
+    public FrameDashboard(Cliente cliente) {
+        this.cliente=cliente;
+        initComponents();
+        customInitComponents();
+    } 
     
     public FrameDashboard() {
         initComponents();
@@ -46,6 +57,11 @@ public class FrameDashboard extends javax.swing.JFrame {
             lblIdCorretor.setText(String.valueOf(corretor.getId()));
         }
         // Adicione outras configurações que dependem do objeto corretor aqui
+        if (cliente != null) {
+            System.out.println("Id cliente: "+cliente.getId());
+            System.out.println("CPF cliente: "+cliente.getCpf());
+            System.out.println("Nome: "+cliente.getNome());
+        }
     }
     
     @SuppressWarnings("unchecked")
@@ -199,13 +215,13 @@ public class FrameDashboard extends javax.swing.JFrame {
                                 .addComponent(jLabel1)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(jLabel9)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGap(22, 22, 22)
                                 .addComponent(lblCorretorLogado, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(lblCorretorSobrenome, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
                                 .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(lblIdCorretor, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -250,13 +266,13 @@ public class FrameDashboard extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel10, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(jLabel10)
+                                .addComponent(lblCorretorSobrenome, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addComponent(lblIdCorretor, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addContainerGap()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblCorretorSobrenome)
-                            .addComponent(lblCorretorLogado, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addComponent(lblCorretorLogado, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
@@ -392,18 +408,20 @@ public class FrameDashboard extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSalvarDadosActionPerformed
 
     private void btnListarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListarActionPerformed
+        corretor.getId();        
         try {
-            Corretor corretor = new Corretor();
-            Cliente cliente = new Cliente();
             ClienteDAO clienteDAO = new ClienteDAO();
-            corretor.getId();
             System.out.println(corretor.getId());
             ArrayList<Cliente> lista = clienteDAO.listarClientes(corretor.getId()); 
-            System.out.println(lista);
-            for (int i = 0; i < lista.size(); i++) {
-                System.out.printf("Posição %d- %s\n",i,lista.get(i));
-            }
-            
+            if (lista.isEmpty()) {
+                System.out.println("Nenhum cliente encontrado para este corretor.");
+            } else {
+                for (int i = 0; i < lista.size(); i++) {
+                    Cliente cliente = lista.get(i);
+                    System.out.printf("Posição %d - ID: %d, Nome: %s\n", i, cliente.getId(), cliente.getNome());
+                    JOptionPane.showMessageDialog(null, "Id: "+cliente.getId()+"\n Nome: "+ cliente.getNome()+"\n Telefone: "+cliente.getTelefone());
+                }
+            } 
         } catch(SQLException ex) {
             ex.printStackTrace();
         } catch(Exception ex) {

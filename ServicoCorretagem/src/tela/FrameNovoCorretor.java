@@ -7,6 +7,7 @@ package tela;
 import controle.Corretor;
 import dao.CorretorDAO;
 import java.sql.SQLException;
+import javax.swing.JFrame;
 
 /**
  *
@@ -19,6 +20,10 @@ public class FrameNovoCorretor extends javax.swing.JFrame {
      */
     public FrameNovoCorretor() {
         initComponents();
+        setTitle("Novo Corretor");
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        setLocationRelativeTo(null); // Centraliza a janela
+        setLayout(null);
     }
 
     /**
