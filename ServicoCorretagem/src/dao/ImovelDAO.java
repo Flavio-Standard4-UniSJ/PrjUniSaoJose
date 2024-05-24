@@ -29,23 +29,25 @@ public class ImovelDAO {
         System.out.println("Imóvel anunciado com sucesso");
     }
 
-    public void excluirAnuncioImovel(String nome, int id_corretor) throws Exception{
-        String sql = ("DELETE FROM Imovel WHERE nome = '"+nome+"' AND id_corrstor=?");
+    public void excluirAnuncioImovel(String descricao, int id_corretor) throws Exception{
+        String sql = ("DELETE FROM Imovel WHERE descricao LIKE ? AND id_corretor = ?");
         PreparedStatement preparador = this.conexao.prepareStatement(sql);
-        preparador.setString(1, nome);
+        preparador.setString(1, "%"+ descricao +"%");
         preparador.setInt(2, id_corretor);
         preparador.execute();
         preparador.close();
+        System.out.println("passei por aqui e exclui o anuncio");
     }
     
-    public void alterarAnuncioImovel(Imovel imovel,String nome, int id_corretor) throws Exception{
-        String sql = "UPDATE Imovel SET preco=? WHERE nome LIKE ? AND id_corretor = ?";        
+    public void alterarAnuncioImovel(float preco, String descricao, int id_corretor) throws Exception{
+        String sql = "UPDATE Imovel SET preco=? WHERE descricao LIKE ? AND id_corretor = ?";        
         PreparedStatement preparador = this.conexao.prepareStatement(sql);
-        preparador.setFloat(1, imovel.getPreco());
-        preparador.setString(2,"%"+ nome +"%");
+        preparador.setFloat(1, preco);
+        preparador.setString(2,"%"+ descricao +"%");
         preparador.setInt(3, id_corretor);
         preparador.execute();
         preparador.close();
+        System.out.println("Consegui atualizar o anúncio.");
     }
     
     public Imovel pesquisarImovel(String localidade, String imovel_categoria) throws Exception{

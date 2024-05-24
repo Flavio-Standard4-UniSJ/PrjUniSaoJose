@@ -42,10 +42,20 @@
             </Menu>
           </SubComponents>
         </Menu>
-        <Menu class="javax.swing.JMenu" name="jMenu2">
+        <Menu class="javax.swing.JMenu" name="jMenu1">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Imoveis"/>
+            <Property name="text" type="java.lang.String" value="imovel"/>
           </Properties>
+          <SubComponents>
+            <MenuItem class="javax.swing.JMenuItem" name="jMenuItem1">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Anuncios"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItem1ActionPerformed"/>
+              </Events>
+            </MenuItem>
+          </SubComponents>
         </Menu>
       </SubComponents>
     </Menu>
@@ -126,13 +136,12 @@
                   </Group>
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace max="32767" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="btnSalvarDados" alignment="1" min="-2" max="-2" attributes="0"/>
-                          <Group type="102" alignment="1" attributes="0">
-                              <Component id="lblImagem" min="-2" pref="281" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="59" max="-2" attributes="0"/>
-                          </Group>
-                      </Group>
+                      <Component id="lblImagem" min="-2" pref="281" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="59" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="1" attributes="0">
+                      <EmptySpace max="32767" attributes="0"/>
+                      <Component id="btnSalvarDados" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
@@ -153,16 +162,16 @@
                   <Group type="102" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="103" alignment="1" groupAlignment="3" attributes="0">
-                              <Component id="jLabel10" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="lblCorretorSobrenome" alignment="3" max="32767" attributes="0"/>
-                          </Group>
+                          <Component id="jLabel10" alignment="1" min="-2" max="-2" attributes="0"/>
                           <Component id="lblIdCorretor" alignment="1" min="-2" pref="24" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="lblCorretorLogado" min="-2" pref="24" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="lblCorretorSobrenome" alignment="1" max="32767" attributes="0"/>
+                          <Component id="lblCorretorLogado" alignment="1" pref="24" max="32767" attributes="0"/>
+                      </Group>
                   </Group>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
