@@ -50,12 +50,11 @@ public class ImovelDAO {
         System.out.println("Consegui atualizar o anúncio.");
     }
     
-    public Imovel pesquisarImovel(String localidade, String imovel_categoria) throws Exception{
+    public Imovel pesquisarImovel(String descricao) throws Exception{
         Imovel imovel = new Imovel();
-        String sql = ("SELECT * FROM Imovel WHERE localidade = ? AND imovel_categoria = ?");
+        String sql = ("SELECT * FROM Imovel WHERE descricao LIKE ?");
         PreparedStatement preparador = this.conexao.prepareStatement(sql);
-        preparador.setString(1, localidade);
-        preparador.setString(2, imovel_categoria);
+        preparador.setString(1, "%"+descricao+"%");
         ResultSet rs = preparador.executeQuery();
         if(rs.next()){
             imovel.setDescricao(rs.getString("descricao"));
@@ -70,6 +69,26 @@ public class ImovelDAO {
         rs.close();
         preparador.close();
         return imovel; 
+    }
+    public ArrayList<Imovel> listaImovel(String localidade, String imovel_categoria) throws Exception{
+        ArrayList<Imovel> imoveis = new ArrayList<Imovel>();
+        String sql = ("SELECT * FROM Imovel WHERE localidade LIKE ? AND imovel_categoria=?");
+        PreparedStatement preparador = this.conexao.prepareStatement(sql);
+        preparador.setString(1, "%"+localidade+"%");
+        preparador.setString(2, imovel_categoria);
+        ResultSet rs = preparador.executeQuery();
+        while(rs.next()){
+            Imovel imovel = new Imovel();
+            imovel.setDescricao(rs.getString("descricao"));
+            imovel.setLocalidade(rs.getString("localidade"));
+            imovel.setPreco(rs.getFloat("preco"));
+            imovel.setImovel_categoria(rs.getString("imovel_categoria"));
+            imovel.setImagem(rs.getBytes("imagem"));
+            imoveis.add(imovel);
+        }
+        rs.close();
+        preparador.close();
+        return imoveis; 
     }
     public ArrayList<Imovel> listaImovel() throws Exception{
         ArrayList<Imovel> imoveis = new ArrayList<Imovel>();
