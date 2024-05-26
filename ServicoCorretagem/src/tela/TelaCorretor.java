@@ -318,7 +318,7 @@ public class TelaCorretor extends javax.swing.JFrame {
     }//GEN-LAST:event_txtDescricaoImovelActionPerformed
 
     private void mnVerTodosAnunciosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnVerTodosAnunciosActionPerformed
-          try {
+        try {
             ImovelDAO imovelDAO = new ImovelDAO();
             ArrayList<Imovel> imoveis = imovelDAO.listaImovel();
             JPanel painelResultados = new JPanel();

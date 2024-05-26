@@ -42,12 +42,29 @@ public class Agenda {
         this.data_atendimento = data_atendimento;
     }
 
+    public String getHora_atendimento() {
+        return hora_atendimento;
+    }
+
+    public void setHora_atendimento(String hora_atendimento) {
+        this.hora_atendimento = hora_atendimento;
+    }
+
+    public String getImovel_categoria() {
+        return imovel_categoria;
+    }
+
+    public void setImovel_categoria(String imovel_categoria) {
+        this.imovel_categoria = imovel_categoria;
+    }
+
+    
     public String getNome_cliente() {
         return nome_cliente;
     }
 
-    public void setNome_cliente(String nome_cliente) {
-        this.nome_cliente = nome_cliente;
+    public void setNome_cliente(String nome_cliente, String sobrenome) {
+        this.nome_cliente = nome_cliente+" "+sobrenome;
     }
 
     public int getStatus() {
@@ -56,8 +73,5 @@ public class Agenda {
 
     public void setStatus(int status) {
         this.status = status;
-    }
-    
-    
-    
+    }   
 }
