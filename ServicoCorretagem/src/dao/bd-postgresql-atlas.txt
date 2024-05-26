@@ -51,6 +51,18 @@ create table imovel (
 	id_corretor integer references corretor(id),
 	imagem bytea
 );
+
+CREATE TABLE agenda (
+	codigo serial PRIMARY KEY, 
+	creci VARCHAR(20) NOT NULL, 
+	tipo_atendimento varchar(200) NOT NULL, 
+	data_atendimento VARCHAR(10) NOT NULL, 
+	hora_atendimento VARCHAR(10) NOT NULL, 
+	nome_cliente VARCHAR(100) NOT NULL, 
+	status INTEGER CHECK(status=1 OR  status=0) not null, 
+	imovel_categoria VARCHAR(200),
+	id_corretor integer REFERENCES corretor(id)
+)
 -----------------------------------------------------------
 
 INSERT INTO Corretor (nome, sobrenome, nascimento, ativo, creci, cpf, email, identidade, senha, pin, telefone) VALUES ('Maria','Das Dores','2000-08-11',1,'0001','8018753718','maria@teste.com','179207514',md5('123456789'),'123456789','21980804000')
