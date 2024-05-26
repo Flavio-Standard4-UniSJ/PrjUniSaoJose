@@ -63,8 +63,8 @@ public class Agenda {
         return nome_cliente;
     }
 
-    public void setNome_cliente(String nome_cliente, String sobrenome) {
-        this.nome_cliente = nome_cliente+" "+sobrenome;
+    public void setNome_cliente(String nome_cliente) {
+        this.nome_cliente = nome_cliente;
     }
 
     public int getStatus() {

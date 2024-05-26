@@ -70,17 +70,18 @@ public class AgendaDAO {
         return listAgenda;
     }
      
-      public boolean desmarcarAgendamento(Agenda agenda) throws SQLException {
-        String sql = "DELETE FROM agenda where codigo = ?";
+      public boolean desmarcarAgendamento(Agenda agenda,int id_corretor) throws SQLException {
+        String sql = "DELETE FROM agenda where codigo = ? AND  id_corretor=?";
         PreparedStatement preparador = conexao.prepareStatement(sql);
         preparador.setInt(1, agenda.getCodigo());
+        preparador.setInt(2, id_corretor);
 
         boolean rowDeleted = preparador.executeUpdate() > 0;
         preparador.close();
         return rowDeleted;
     }
       
-    public boolean mudarAgendamento(Agenda agenda) throws SQLException {
+    public boolean mudarAgendamento(Agenda agenda, int id_corretor) throws SQLException {
         String sql = "UPDATE agenda SET creci = ?, tipo_atendimento = ?, data_atendimento = ?, hora_atendimento = ?, nome_cliente = ?, status = ?, imovel_categoria = ? WHERE codigo = ?";
         PreparedStatement preparador = conexao.prepareStatement(sql);
         preparador.setString(1, agenda.getCreci());
@@ -91,7 +92,8 @@ public class AgendaDAO {
         preparador.setInt(6, agenda.getStatus());
         preparador.setString(7, agenda.getImovel_categoria());
         preparador.setInt(8, agenda.getCodigo());
-
+        preparador.setInt(2, id_corretor);
+ 
         boolean rowUpdated = preparador.executeUpdate() > 0;
         preparador.close();
         return rowUpdated;
