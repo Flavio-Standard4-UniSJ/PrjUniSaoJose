@@ -18,6 +18,13 @@ CREATE TABLE Corretor (
 	telefone  VARCHAR(20)
 );
 
+CREATE TABLE acesso (
+	id serial primary key,
+	nome_usuario varchar(100) not null, 
+	data_acesso varchar(50),
+	hora_acesso varchar(50)
+);
+
 CREATE TABLE cliente (
 	id serial PRIMARY KEY,
 	nome VARCHAR(50),
