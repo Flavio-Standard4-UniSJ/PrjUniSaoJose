@@ -46,9 +46,10 @@ public class CorretorDAO {
         preparador.close();
     }
     
-    public void excluirCorretor(String nome) throws Exception{
-        String sql = ("DELETE FROM Corretor WHERE nome = '"+nome+"'");
+    public void excluirCorretor(int id) throws Exception{
+        String sql = ("DELETE FROM Corretor WHERE id=?");
         PreparedStatement preparador = this.conexao.prepareStatement(sql);
+        preparador.setInt(1, id);
         preparador.execute();
         preparador.close();
     }
@@ -99,10 +100,11 @@ public class CorretorDAO {
     }
     
     
-   public void desativarContaCorretor(Corretor corretor) throws Exception{
-        String sql = "DELETE FROM Corretor WHERE email=?";        
+   public void desativarContaCorretor(String email, int id) throws Exception{
+        String sql = "DELETE FROM Corretor WHERE email=? AND  id=?";        
         PreparedStatement preparador = this.conexao.prepareStatement(sql);
-        preparador.setString(1, corretor.getEmail());
+        preparador.setString(1, email);
+        preparador.setInt(2, id);
         preparador.execute();
         preparador.close();
     } 

@@ -9,25 +9,28 @@
             <Property name="text" type="java.lang.String" value="Configura&#xe7;&#xf5;es"/>
           </Properties>
           <SubComponents>
-            <Menu class="javax.swing.JMenu" name="mnCorretor">
+            <Menu class="javax.swing.JMenu" name="mnrDestivarConta">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Corretor"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mnrDestivarContaActionPerformed"/>
+              </Events>
               <SubComponents>
                 <MenuItem class="javax.swing.JMenuItem" name="mnCorretorAlterar">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="alterar dados"/>
+                    <Property name="text" type="java.lang.String" value="alterar dados conta"/>
                   </Properties>
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mnCorretorAlterarActionPerformed"/>
                   </Events>
                 </MenuItem>
-                <MenuItem class="javax.swing.JMenuItem" name="mnDesativarConta">
+                <MenuItem class="javax.swing.JMenuItem" name="mnExcluirConta">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Desativar Conta"/>
+                    <Property name="text" type="java.lang.String" value="excluir conta"/>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mnDesativarContaActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mnExcluirContaActionPerformed"/>
                   </Events>
                 </MenuItem>
                 <MenuItem class="javax.swing.JMenuItem" name="mnCorretorNovoCliente">

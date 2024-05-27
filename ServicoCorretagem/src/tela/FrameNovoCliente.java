@@ -19,13 +19,18 @@ public class FrameNovoCliente extends javax.swing.JFrame {
     public FrameNovoCliente(Corretor corretor) {
         this.corretor = corretor;
         initComponents();
-        customInitComponents();
+        customInitComponents(); 
+        setTitle("Novo Cliente");
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+         setLocationRelativeTo(null); // Centraliza a janela
+        setLayout(null);
     }
     public FrameNovoCliente() {
         initComponents();
+        customInitComponents();
         setTitle("Novo Cliente");
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        setLocationRelativeTo(null); // Centraliza a janela
+         setLocationRelativeTo(null); // Centraliza a janela
         setLayout(null);
     }
 
@@ -210,7 +215,7 @@ public class FrameNovoCliente extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1)
-                .addContainerGap(574, Short.MAX_VALUE))
+                .addContainerGap(497, Short.MAX_VALUE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(85, 85, 85)
@@ -257,7 +262,7 @@ public class FrameNovoCliente extends javax.swing.JFrame {
                         .addComponent(txtSalario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGap(30, 30, 30)
                     .addComponent(btnNovoClienteCorretor)
-                    .addContainerGap(85, Short.MAX_VALUE)))
+                    .addContainerGap(30, Short.MAX_VALUE)))
         );
 
         pack();

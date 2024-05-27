@@ -2,7 +2,7 @@ package servico;
 
 
 public class Agenda {
-    private int codigo;
+    private int codigo, id_corretor;
     private String creci;
     private String tipo_atendimento;
     private String data_atendimento, hora_atendimento;
@@ -16,6 +16,14 @@ public class Agenda {
 
     public void setCodigo(int codigo) {
         this.codigo = codigo;
+    }
+
+    public int getId_corretor() {
+        return id_corretor;
+    }
+
+    public void setId_corretor(int id_corretor) {
+        this.id_corretor = id_corretor;
     }
 
     public String getCreci() {

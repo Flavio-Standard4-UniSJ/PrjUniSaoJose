@@ -93,9 +93,9 @@ public class FrameDashboard extends javax.swing.JFrame {
         lblCorretorSobrenome = new javax.swing.JLabel();
         mnPrincipal = new javax.swing.JMenuBar();
         mnSignUp = new javax.swing.JMenu();
-        mnCorretor = new javax.swing.JMenu();
+        mnrDestivarConta = new javax.swing.JMenu();
         mnCorretorAlterar = new javax.swing.JMenuItem();
-        mnDesativarConta = new javax.swing.JMenuItem();
+        mnExcluirConta = new javax.swing.JMenuItem();
         mnCorretorNovoCliente = new javax.swing.JMenuItem();
         jMenu1 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
@@ -165,23 +165,28 @@ public class FrameDashboard extends javax.swing.JFrame {
 
         mnSignUp.setText("Configurações");
 
-        mnCorretor.setText("Corretor");
+        mnrDestivarConta.setText("Corretor");
+        mnrDestivarConta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnrDestivarContaActionPerformed(evt);
+            }
+        });
 
-        mnCorretorAlterar.setText("alterar dados");
+        mnCorretorAlterar.setText("alterar dados conta");
         mnCorretorAlterar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 mnCorretorAlterarActionPerformed(evt);
             }
         });
-        mnCorretor.add(mnCorretorAlterar);
+        mnrDestivarConta.add(mnCorretorAlterar);
 
-        mnDesativarConta.setText("Desativar Conta");
-        mnDesativarConta.addActionListener(new java.awt.event.ActionListener() {
+        mnExcluirConta.setText("excluir conta");
+        mnExcluirConta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                mnDesativarContaActionPerformed(evt);
+                mnExcluirContaActionPerformed(evt);
             }
         });
-        mnCorretor.add(mnDesativarConta);
+        mnrDestivarConta.add(mnExcluirConta);
 
         mnCorretorNovoCliente.setText("novo cliente");
         mnCorretorNovoCliente.addActionListener(new java.awt.event.ActionListener() {
@@ -189,9 +194,9 @@ public class FrameDashboard extends javax.swing.JFrame {
                 mnCorretorNovoClienteActionPerformed(evt);
             }
         });
-        mnCorretor.add(mnCorretorNovoCliente);
+        mnrDestivarConta.add(mnCorretorNovoCliente);
 
-        mnSignUp.add(mnCorretor);
+        mnSignUp.add(mnrDestivarConta);
 
         mnPrincipal.add(mnSignUp);
 
@@ -335,20 +340,6 @@ public class FrameDashboard extends javax.swing.JFrame {
         alterar.setVisible(true);
     }//GEN-LAST:event_mnCorretorAlterarActionPerformed
 
-    private void mnDesativarContaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnDesativarContaActionPerformed
-        Corretor corretor = new Corretor();
-        CorretorDAO corretorDAO;
-        Acesso acesso;
-        try {
-            corretorDAO = new CorretorDAO();
-            acesso = new Acesso();
-            acesso.getNomeUsuario();
-            corretorDAO.desativarContaCorretor(corretor);
-        } catch (Exception ex) {
-            JOptionPane.showMessageDialog(null, "Não foi possível desativar sua conta, tente novamente mais tarde");
-        }
-    }//GEN-LAST:event_mnDesativarContaActionPerformed
-
     private void mnCorretorNovoClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnCorretorNovoClienteActionPerformed
         FrameNovoCliente cliente = new FrameNovoCliente(corretor);
         cliente.setVisible(true);
@@ -458,6 +449,22 @@ public class FrameDashboard extends javax.swing.JFrame {
         agenda.setVisible(true);
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
+    private void mnrDestivarContaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnrDestivarContaActionPerformed
+
+    }//GEN-LAST:event_mnrDestivarContaActionPerformed
+
+    private void mnExcluirContaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnExcluirContaActionPerformed
+        try {
+            CorretorDAO corretorDAO = new CorretorDAO();
+            corretorDAO.excluirCorretor(corretor.getId());
+            JOptionPane.showMessageDialog(null, "conta deletada com sucesso.");
+        } catch(SQLException ex){
+            ex.printStackTrace();
+        }catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Ops! ocorreu um erro ao deletar sua conta"+e.getMessage());
+        }
+    }//GEN-LAST:event_mnExcluirContaActionPerformed
+   
     /**
      * @param args the command line arguments
      */
@@ -522,12 +529,12 @@ public class FrameDashboard extends javax.swing.JFrame {
     private javax.swing.JLabel lblCorretorSobrenome;
     private javax.swing.JLabel lblIdCorretor;
     private javax.swing.JLabel lblImagem;
-    private javax.swing.JMenu mnCorretor;
     private javax.swing.JMenuItem mnCorretorAlterar;
     private javax.swing.JMenuItem mnCorretorNovoCliente;
-    private javax.swing.JMenuItem mnDesativarConta;
+    private javax.swing.JMenuItem mnExcluirConta;
     private javax.swing.JMenuBar mnPrincipal;
     private javax.swing.JMenu mnSignUp;
+    private javax.swing.JMenu mnrDestivarConta;
     private javax.swing.JTextField txtDescricao;
     private javax.swing.JTextField txtLocal;
     private javax.swing.JTextField txtNome;

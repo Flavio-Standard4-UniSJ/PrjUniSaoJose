@@ -138,7 +138,7 @@ public class FrameLogin extends javax.swing.JFrame {
             CorretorDAO corretorDAO = new CorretorDAO();
             Corretor usuario_logado = corretorDAO.acessarContaCorretor(txtEmail.getText(), new String(pwdSenha.getPassword()));
             if(usuario_logado==null){
-                JOptionPane.showMessageDialog(null, FrameLogin.this, "Email/Senha inválidos!",JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(null, "Email/Senha inválidos!");
             }else{
                 FrameDashboard dashboard = new FrameDashboard(usuario_logado);
                 dashboard.setVisible(true);

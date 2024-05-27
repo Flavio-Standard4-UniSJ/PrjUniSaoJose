@@ -8,6 +8,7 @@ import controle.Corretor;
 import dao.CorretorDAO;
 import java.sql.SQLException;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -162,34 +163,32 @@ public class FrameNovoCorretor extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(14, 14, 14)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(17, 17, 17)
-                        .addComponent(jLabel2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(47, 47, 47))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLabel4)
-                                    .addComponent(jLabel3))
-                                .addGap(18, 18, 18)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtSobrenome)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(0, 0, Short.MAX_VALUE)
-                                        .addComponent(txtNascimento, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGap(5, 5, 5))
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addComponent(jLabel7)
                                     .addComponent(jLabel6))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 61, Short.MAX_VALUE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(txtCreci, javax.swing.GroupLayout.DEFAULT_SIZE, 245, Short.MAX_VALUE)
+                                    .addComponent(txtCpf)))
+                            .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtCreci, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtCpf))))
-                        .addGap(41, 41, 41))
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(jLabel4)
+                                        .addComponent(jLabel3))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(17, 17, 17)
+                                        .addComponent(jLabel2)))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(txtNome, javax.swing.GroupLayout.DEFAULT_SIZE, 244, Short.MAX_VALUE)
+                                        .addGap(1, 1, 1))
+                                    .addComponent(txtNascimento)
+                                    .addComponent(txtSobrenome))))
+                        .addGap(46, 46, 46))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(8, 8, 8)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -198,20 +197,15 @@ public class FrameNovoCorretor extends javax.swing.JFrame {
                             .addComponent(jLabel10)
                             .addComponent(jLabel11)
                             .addComponent(jLabel12))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(33, 33, 33)
-                                .addComponent(txtEmail))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(18, 18, 18)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtSenha)
-                                    .addComponent(txtIdentidade)
-                                    .addComponent(txtPin, javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(txtTelefone, javax.swing.GroupLayout.DEFAULT_SIZE, 257, Short.MAX_VALUE)))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(btnNovoCorretor)))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(txtPin, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE)
+                                .addComponent(txtSenha, javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(txtIdentidade, javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(btnNovoCorretor, javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(txtEmail, javax.swing.GroupLayout.Alignment.TRAILING))
+                            .addComponent(txtTelefone, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(41, 41, 41))))
             .addGroup(layout.createSequentialGroup()
                 .addGap(16, 16, 16)
@@ -264,9 +258,9 @@ public class FrameNovoCorretor extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel12)
                     .addComponent(txtTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 61, Short.MAX_VALUE)
+                .addGap(29, 29, 29)
                 .addComponent(btnNovoCorretor)
-                .addGap(53, 53, 53))
+                .addContainerGap(29, Short.MAX_VALUE))
         );
 
         pack();
@@ -303,20 +297,27 @@ public class FrameNovoCorretor extends javax.swing.JFrame {
     private void btnNovoCorretorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNovoCorretorActionPerformed
         // TODO add your handling code here:
         Corretor corretor = new Corretor();
-        corretor.setNome(txtNome.getText());
-        corretor.setSobrenome(txtSobrenome.getText());
-        corretor.setNascimento(txtNascimento.getText());
-        corretor.ativo = (int) 1;
-        corretor.setCreci(txtCreci.getText());
-        corretor.setCpf(txtCpf.getText());
-        corretor.setEmail(txtEmail.getText());
-        corretor.setIdentidade(txtIdentidade.getText());
-        corretor.setSenha(txtSenha.getText());
-        corretor.setPin(txtPin.getText());
-        corretor.setTelefone(txtTelefone.getText());
+        
         try {
-            CorretorDAO corretorDAO = new CorretorDAO();
-            corretorDAO.cadastrarCorretor(corretor);
+            if (corretor == null) {
+                JOptionPane.showMessageDialog(null, "Ops! ocorreu um erro ao adicionar novo corretor.");
+            } else {
+                corretor.setNome(txtNome.getText());
+                corretor.setSobrenome(txtSobrenome.getText());
+                corretor.setNascimento(txtNascimento.getText());
+                corretor.ativo = (int) 1;
+                corretor.setCreci(txtCreci.getText());
+                corretor.setCpf(txtCpf.getText());
+                corretor.setEmail(txtEmail.getText());
+                corretor.setIdentidade(txtIdentidade.getText());
+                corretor.setSenha(txtSenha.getText());
+                corretor.setPin(txtPin.getText());
+                corretor.setTelefone(txtTelefone.getText());
+                CorretorDAO corretorDAO = new CorretorDAO();
+                corretorDAO.cadastrarCorretor(corretor);
+                JOptionPane.showMessageDialog(null, "Novo corretor adicionado");
+            }
+            
         } catch(SQLException ex) {
             ex.printStackTrace();
         } catch(Exception ex) {
