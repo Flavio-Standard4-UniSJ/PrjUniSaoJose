@@ -9,6 +9,8 @@ import java.time.Month;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Locale;
 import javax.swing.JOptionPane;
@@ -49,6 +51,15 @@ public class Main {
         funcionarios.forEach(f -> f.aumentarSalario(new BigDecimal("0.10")));
         
         //não sei  Agrupar os funcionários por função em um MAP, sendo a chave a “função” e o valor a “lista de funcionários”.
+        
+        //ordenando funcionários por ordem alfabética
+        List<Funcionario> funcionariosOrdenados = new ArrayList<>(funcionarios);
+        funcionariosOrdenados.sort(Comparator.comparing(Funcionario::getNome));
+        
+        System.out.println("Lista de Funcionários ordenados por ordem alfabética");
+        for(int i =0; i < funcionariosOrdenados.size(); i++){
+            System.out.println(funcionariosOrdenados.get(i).getNome()+" | "+funcionariosOrdenados.get(i).getDataNascimento()+" | "+ funcionariosOrdenados.get(i).getSalario()+ " | "+ funcionariosOrdenados.get(i).getFuncao());
+        }
     }
     
 }
