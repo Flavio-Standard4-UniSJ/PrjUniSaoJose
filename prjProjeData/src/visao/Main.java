@@ -30,14 +30,20 @@ public class Main {
         ));
        
         System.out.println("Lista de Funcionários");
-        funcionarios.forEach(System.out::println);
+        System.out.println("Nome  | Data de Nascimento  | Salário  |  Função");
+        for(int i =0; i < funcionarios.size(); i++){
+            System.out.println(funcionarios.get(i).getNome()+" | "+funcionarios.get(i).getDataNascimento()+" | "+ funcionarios.get(i).getSalario()+ " | "+ funcionarios.get(i).getFuncao());
+        }
         System.out.println();
         
         // remove João
         funcionarios.removeIf(f -> f.getNome().equalsIgnoreCase("João"));
         
         System.out.println("Lista de Funcionários após remoção do João");
-        funcionarios.forEach(System.out::println);
+        System.out.println("Nome  | Data de Nascimento  | Salário  |  Função");
+        for(int i =0; i < funcionarios.size(); i++){
+            System.out.println(funcionarios.get(i).getNome()+" | "+funcionarios.get(i).getDataNascimento()+" | "+ funcionarios.get(i).getSalario()+ " | "+ funcionarios.get(i).getFuncao());
+        }
         System.out.println();
         
         funcionarios.forEach(f -> f.aumentarSalario(new BigDecimal("0.10")));
