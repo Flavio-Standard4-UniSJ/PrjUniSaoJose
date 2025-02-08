@@ -4,17 +4,12 @@ package visao;
 import controle.Funcionario;
 import java.math.BigDecimal;
 import static java.math.BigDecimal.ROUND_CEILING;
-import java.text.NumberFormat;
 import java.time.LocalDate;
-import java.time.Month;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
-import java.util.Locale;
-import javax.swing.JOptionPane;
 
 public class Main {
 
@@ -34,13 +29,11 @@ public class Main {
        
         //formatando data para dd/MM/yyyy
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-        String dataNascimentoFormatada;
-        
         
         System.out.println("Lista de Funcionários");
         System.out.println("Nome  | Data de Nascimento  | Salário  |  Função");
         for(int i =0; i < funcionarios.size(); i++){
-            System.out.println(funcionarios.get(i).getNome()+" | "+funcionarios.get(i).getDataNascimento().format(formatter)+" | "+ funcionarios.get(i).getSalario()+ " | "+ funcionarios.get(i).getFuncao());
+            System.out.println(funcionarios.get(i).getNome()+" | "+funcionarios.get(i).getDataNascimento().format(formatter)+" | "+ funcionarios.get(i).getSalario().setScale(2, ROUND_CEILING)+ " | "+ funcionarios.get(i).getFuncao());
         }
         System.out.println();
         
@@ -50,7 +43,7 @@ public class Main {
         System.out.println("Lista de Funcionários após remoção do João");
         System.out.println("Nome  | Data de Nascimento  | Salário  |  Função");
         for(int i =0; i < funcionarios.size(); i++){
-            System.out.println(funcionarios.get(i).getNome()+" | "+funcionarios.get(i).getDataNascimento().format(formatter)+" | "+ funcionarios.get(i).getSalario()+ " | "+ funcionarios.get(i).getFuncao());
+            System.out.println(funcionarios.get(i).getNome()+" | "+funcionarios.get(i).getDataNascimento().format(formatter)+" | "+ funcionarios.get(i).getSalario().setScale(2, ROUND_CEILING)+ " | "+ funcionarios.get(i).getFuncao());
         }
         System.out.println();
         
@@ -64,7 +57,7 @@ public class Main {
         
         System.out.println("Lista de Funcionários ordenados por ordem alfabética");
         for(int i =0; i < funcionariosOrdenados.size(); i++){
-            System.out.println(funcionariosOrdenados.get(i).getNome()+" | "+funcionarios.get(i).getDataNascimento().format(formatter)+" | "+ funcionariosOrdenados.get(i).getSalario()+ " | "+ funcionariosOrdenados.get(i).getFuncao());
+            System.out.println(funcionariosOrdenados.get(i).getNome()+" | "+funcionarios.get(i).getDataNascimento().format(formatter)+" | "+ funcionariosOrdenados.get(i).getSalario().setScale(2, ROUND_CEILING)+ " | "+ funcionariosOrdenados.get(i).getFuncao());
         }
     }
     
