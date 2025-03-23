@@ -7,6 +7,7 @@ package view;
 import control.MeuIMC;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import model.MeuImcDAO;
 
 /**
@@ -21,7 +22,8 @@ public class PesquisarUsuario extends javax.swing.JFrame {
     public PesquisarUsuario() {
         initComponents();
     }
-
+    
+    MeuIMC m = new MeuIMC();
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -40,6 +42,7 @@ public class PesquisarUsuario extends javax.swing.JFrame {
         lblNascimento = new javax.swing.JLabel();
         lblImc = new javax.swing.JLabel();
         lblResultado = new javax.swing.JLabel();
+        btnExcluirUsuario = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -65,6 +68,13 @@ public class PesquisarUsuario extends javax.swing.JFrame {
         lblImc.setText("IMC");
 
         lblResultado.setText("Resultado");
+
+        btnExcluirUsuario.setText("excluir");
+        btnExcluirUsuario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnExcluirUsuarioActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -96,7 +106,10 @@ public class PesquisarUsuario extends javax.swing.JFrame {
                         .addComponent(lblImc))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(169, 169, 169)
-                        .addComponent(lblResultado)))
+                        .addComponent(lblResultado))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(156, 156, 156)
+                        .addComponent(btnExcluirUsuario)))
                 .addContainerGap(23, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -119,15 +132,16 @@ public class PesquisarUsuario extends javax.swing.JFrame {
                 .addComponent(lblImc)
                 .addGap(46, 46, 46)
                 .addComponent(lblResultado)
-                .addContainerGap(58, Short.MAX_VALUE))
+                .addGap(33, 33, 33)
+                .addComponent(btnExcluirUsuario)
+                .addContainerGap(32, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnPesquisarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisarUsuarioActionPerformed
-           MeuIMC m = new MeuIMC();
-           m.setId(Integer.parseInt(txtId.getText()));
+        m.setId(Integer.parseInt(txtId.getText()));
         try {
             MeuImcDAO meuImcDAO = new MeuImcDAO();
             MeuIMC resultados = meuImcDAO.pesquisarUsuarioIMC(m.getId());
@@ -139,6 +153,17 @@ public class PesquisarUsuario extends javax.swing.JFrame {
             System.out.println(ex.getMessage());
         }
     }//GEN-LAST:event_btnPesquisarUsuarioActionPerformed
+
+    private void btnExcluirUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirUsuarioActionPerformed
+        int id = m.getId();
+        try{
+            MeuImcDAO meuImcDAO = new MeuImcDAO();
+            meuImcDAO.excluirUsuario(id);
+            JOptionPane.showMessageDialog(null, "O registro " + id + " foi deletado.");
+        }catch (Exception ex) {
+            System.out.println(ex.getMessage());
+        }
+    }//GEN-LAST:event_btnExcluirUsuarioActionPerformed
 
     /**
      * @param args the command line arguments
@@ -176,6 +201,7 @@ public class PesquisarUsuario extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnExcluirUsuario;
     private javax.swing.JButton btnPesquisarUsuario;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

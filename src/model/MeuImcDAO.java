@@ -44,7 +44,7 @@ public class MeuImcDAO {
             m.setImc(rs.getFloat("imc"));
             m.setResultado(rs.getString("resultado"));
         }else{
-            JOptionPane.showMessageDialog(null, "nenhum cliente até agora.");
+            JOptionPane.showMessageDialog(null, "nenhum usuário foi encontrado.");
             m = null;    
         }
         rs.close();
@@ -63,5 +63,13 @@ public class MeuImcDAO {
         preparador.execute();
         preparador.close();
         System.out.println("executado a atualização do IMC");
+    }
+    
+    public void excluirUsuario(int id) throws SQLException {
+        String sql = "DELETE FROM usuario WHERE id = ?";
+        PreparedStatement preparador = conexao.prepareStatement(sql);
+        preparador.setInt(1, id);
+        preparador.execute();
+        preparador.close();
     }
 }
