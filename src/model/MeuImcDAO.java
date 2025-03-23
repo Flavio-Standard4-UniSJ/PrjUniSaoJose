@@ -5,6 +5,8 @@ import dao.CriaConexao;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import javax.swing.JOptionPane;
 
 public class MeuImcDAO {
     private Connection conexao;
@@ -28,4 +30,38 @@ public class MeuImcDAO {
     
     }
     
+    public MeuIMC pesquisarUsuarioIMC(int id) throws SQLException {
+        MeuIMC m = new MeuIMC();
+        String sql = "SELECT * FROM usuario WHERE id = ?";
+        PreparedStatement preparador = this.conexao.prepareStatement(sql);       
+        preparador.setInt(1, id);
+        ResultSet rs = preparador.executeQuery();
+        if(rs.next()){
+            m.setNome(rs.getString("nome"));
+            m.setNascimento(rs.getString("nascimento"));
+            m.setPeso(rs.getFloat("peso"));
+            m.setAltura(rs.getFloat("altura"));
+            m.setImc(rs.getFloat("imc"));
+            m.setResultado(rs.getString("resultado"));
+        }else{
+            JOptionPane.showMessageDialog(null, "nenhum cliente até agora.");
+            m = null;    
+        }
+        rs.close();
+        preparador.close();
+        return m;
+    }
+    
+    public void atualizaIMC(MeuIMC meuIMC) throws SQLException {
+        String sql = "UPDATE usuario SET peso = ?, altura = ?, imc = ?, resultado = ? WHERE id = ?";
+        PreparedStatement preparador = conexao.prepareStatement(sql);
+        preparador.setFloat(1, meuIMC.getPeso());
+        preparador.setFloat(2, meuIMC.getAltura());
+        preparador.setFloat(3, meuIMC.getImc());
+        preparador.setString(4, meuIMC.getResultado());
+        preparador.setInt(5, meuIMC.getId());
+        preparador.execute();
+        preparador.close();
+        System.out.println("executado a atualização do IMC");
+    }
 }

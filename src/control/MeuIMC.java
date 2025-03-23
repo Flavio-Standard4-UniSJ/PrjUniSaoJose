@@ -2,13 +2,17 @@
 package control;
 
 public class MeuIMC {
-    private final String nome;
-    private final String nascimento;
+    private int id;
+    private String nome;
+    private String nascimento;
     protected float peso;
     protected float altura; //em centimetros
     protected float imc;
     protected String resultado;
-    
+
+    public MeuIMC() {
+    }
+
     public MeuIMC(String nome, String nascimento) {
         this.nome = nome;
         this.nascimento = nascimento;
@@ -39,13 +43,27 @@ public class MeuIMC {
         }
         return resultado;
     }
+    
+    public int getId() {
+        return id;
+    }
 
+    public void setId(int id) {
+        this.id = id;
+    }
+    
     public String getNome() {
         return nome;
     }
 
+    public void setNome(String nome){
+        this.nome = nome;
+    }
     public String getNascimento() {
         return nascimento;
+    }
+    public void setNascimento(String nasc){
+        this.nascimento = nasc;
     }
 
     public float getPeso() {
