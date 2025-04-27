@@ -2,11 +2,12 @@ package servico;
 
 
 public class Agenda {
-    private int codigo;
+    private int codigo, id_corretor;
     private String creci;
     private String tipo_atendimento;
     private String data_atendimento, hora_atendimento;
     public String nome_cliente;
+    public String sobrenome_cliente;
     public int status;
     public String imovel_categoria;
 
@@ -16,6 +17,14 @@ public class Agenda {
 
     public void setCodigo(int codigo) {
         this.codigo = codigo;
+    }
+
+    public int getId_corretor() {
+        return id_corretor;
+    }
+
+    public void setId_corretor(int id_corretor) {
+        this.id_corretor = id_corretor;
     }
 
     public String getCreci() {
@@ -42,6 +51,23 @@ public class Agenda {
         this.data_atendimento = data_atendimento;
     }
 
+    public String getHora_atendimento() {
+        return hora_atendimento;
+    }
+
+    public void setHora_atendimento(String hora_atendimento) {
+        this.hora_atendimento = hora_atendimento;
+    }
+
+    public String getImovel_categoria() {
+        return imovel_categoria;
+    }
+
+    public void setImovel_categoria(String imovel_categoria) {
+        this.imovel_categoria = imovel_categoria;
+    }
+
+    
     public String getNome_cliente() {
         return nome_cliente;
     }
@@ -50,14 +76,19 @@ public class Agenda {
         this.nome_cliente = nome_cliente;
     }
 
+    public String getSobrenome_cliente() {
+        return sobrenome_cliente;
+    }
+
+    public void setSobrenome_cliente(String sobrenomr_cliente) {
+        this.sobrenome_cliente = sobrenomr_cliente;
+    }
+    
     public int getStatus() {
         return status;
     }
 
     public void setStatus(int status) {
         this.status = status;
-    }
-    
-    
-    
+    }   
 }
