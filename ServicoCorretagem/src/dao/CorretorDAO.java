@@ -46,9 +46,10 @@ public class CorretorDAO {
         preparador.close();
     }
     
-    public void excluirCorretor(String nome) throws Exception{
-        String sql = ("DELETE FROM Corretor WHERE nome = '"+nome+"'");
+    public void excluirCorretor(int id) throws Exception{
+        String sql = ("DELETE FROM Corretor WHERE id=?");
         PreparedStatement preparador = this.conexao.prepareStatement(sql);
+        preparador.setInt(1, id);
         preparador.execute();
         preparador.close();
     }
@@ -72,30 +73,38 @@ public class CorretorDAO {
         preparador.close();
         System.out.println("Corretor alterado com sucesso");
     }
-    public Corretor acessarContaCorretor(String email, String senha) throws Exception{
+    public Corretor acessarContaCorretor(String email, String senha) throws SQLException{
         String sql = "SELECT * FROM Corretor WHERE email=? AND senha=md5(?)";
         PreparedStatement preparador = this.conexao.prepareStatement(sql);
         preparador.setString(1, email);
         preparador.setString(2, senha);
         ResultSet resultSet = preparador.executeQuery();
+         Corretor corretor = new Corretor();
         if (resultSet != null) {
-            Corretor corretor = new Corretor();
-            if (resultSet.next()) {               
+            if (resultSet.next()) { 
+                corretor.setId(resultSet.getInt("id"));
                 corretor.setNome(resultSet.getString("nome"));
+                corretor.setSobrenome(resultSet.getString("sobrenome"));
                 corretor.setEmail(resultSet.getString("email"));
-                corretor.setSenha(resultSet.getString("senha")); 
+                corretor.setSenha(resultSet.getString("senha"));
+                corretor.setCpf(resultSet.getString("cpf"));
+                corretor.setCreci(resultSet.getString("creci"));
                 return corretor;
             }
         }else{
             JOptionPane.showMessageDialog(null, "Dados incorretos!");
+            return null;
         }
         preparador.close(); 
         return null;  
     }
-   public void desativarContaCorretor(Corretor corretor) throws Exception{
-        String sql = "DELETE FROM Corretor WHERE email=?";        
+    
+    
+   public void desativarContaCorretor(String email, int id) throws Exception{
+        String sql = "DELETE FROM Corretor WHERE email=? AND  id=?";        
         PreparedStatement preparador = this.conexao.prepareStatement(sql);
-        preparador.setString(1, corretor.getEmail());
+        preparador.setString(1, email);
+        preparador.setInt(2, id);
         preparador.execute();
         preparador.close();
     } 

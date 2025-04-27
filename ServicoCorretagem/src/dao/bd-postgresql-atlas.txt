@@ -18,6 +18,13 @@ CREATE TABLE Corretor (
 	telefone  VARCHAR(20)
 );
 
+CREATE TABLE acesso (
+	id serial primary key,
+	nome_usuario varchar(100) not null, 
+	data_acesso varchar(50),
+	hora_acesso varchar(50)
+);
+
 CREATE TABLE cliente (
 	id serial PRIMARY KEY,
 	nome VARCHAR(50),
@@ -50,6 +57,18 @@ create table imovel (
 	imovel_categoria varchar(100) not null,
 	id_corretor integer references corretor(id),
 	imagem bytea
+);
+
+
+CREATE TABLE agenda (
+	creci VARCHAR(20) not null, 
+	tipo_atendimento  VARCHAR(40), 
+	data_atendimento VARCHAR(20), 
+	hora_atendimento VARCHAR(20), 
+	nome_cliente VARCHAR(50) not null, 
+	status  int CHECK(status = 0 OR status = 1), 
+	imovel_categoria varchar(100), 
+	id_corretor integer REFERENCES corretor(id) NOT NULL
 );
 -----------------------------------------------------------
 
