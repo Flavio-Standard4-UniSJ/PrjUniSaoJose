@@ -4,6 +4,7 @@ package tela;
 import controle.Corretor;
 import dao.CorretorDAO;
 import java.sql.SQLException;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import servico.Acesso;
 
@@ -11,6 +12,10 @@ public class FrameLogin extends javax.swing.JFrame {
  
     public FrameLogin() {
         initComponents();
+        setTitle("Login");
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        setLocationRelativeTo(null); // Centraliza a janela
+        setLayout(null);
     }
 
     @SuppressWarnings("unchecked")
@@ -38,7 +43,7 @@ public class FrameLogin extends javax.swing.JFrame {
 
         jLabel2.setText("senha: ");
 
-        btnLogin.setBackground(new java.awt.Color(0, 153, 51));
+        btnLogin.setBackground(new java.awt.Color(153, 255, 153));
         btnLogin.setForeground(new java.awt.Color(0, 102, 51));
         btnLogin.setText("Login");
         btnLogin.addActionListener(new java.awt.event.ActionListener() {
@@ -117,6 +122,9 @@ public class FrameLogin extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    //private FrameDashboard dashboardCorretor;
+    //private Corretor corretorSelecionado;
+    
     private void mnCorretorNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnCorretorNovoActionPerformed
         FrameNovoCorretor frameRegistro = new FrameNovoCorretor();
         frameRegistro.setVisible(true);
@@ -128,11 +136,11 @@ public class FrameLogin extends javax.swing.JFrame {
         try {
             acesso = new Acesso();
             CorretorDAO corretorDAO = new CorretorDAO();
-            Corretor utilizador = corretorDAO.acessarContaCorretor(txtEmail.getText(), new String(pwdSenha.getPassword()));
-            if(utilizador==null){
+            Corretor usuario_logado = corretorDAO.acessarContaCorretor(txtEmail.getText(), new String(pwdSenha.getPassword()));
+            if(usuario_logado==null){
                 JOptionPane.showMessageDialog(null, "Email/Senha inválidos!");
             }else{
-                FrameDashboard dashboard = new FrameDashboard();
+                FrameDashboard dashboard = new FrameDashboard(usuario_logado);
                 dashboard.setVisible(true);
             }
         } catch(SQLException ex) {
@@ -141,7 +149,7 @@ public class FrameLogin extends javax.swing.JFrame {
             ex.getMessage();
         }
     }//GEN-LAST:event_btnLoginActionPerformed
-
+    
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -169,7 +177,8 @@ public class FrameLogin extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new FrameLogin().setVisible(true);
+                new FrameLogin();
+                new FrameLogin().setVisible(true); 
             }
         });
     }

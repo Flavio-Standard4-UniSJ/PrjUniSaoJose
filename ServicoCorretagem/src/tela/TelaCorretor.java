@@ -5,7 +5,15 @@
 package tela;
 
 import dao.ImovelDAO;
+import java.awt.image.BufferedImage;
+import java.util.ArrayList;
+import javax.swing.BoxLayout;
+import javax.swing.ImageIcon;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import servico.Imovel;
 import servico.ManipulaImagem;
 
@@ -14,14 +22,37 @@ import servico.ManipulaImagem;
  * @author trabalho
  */
 public class TelaCorretor extends javax.swing.JFrame {
-
+    BufferedImage imagem; //tipo variavel armazena imagem em bytes 
     /**
      * Creates new form TelaCorretor
      */
     public TelaCorretor() {
         initComponents();
+        setTitle("Principal");
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        setLocationRelativeTo(null); // Centraliza a janela
+        setLayout(null);
     }
 
+     private JPanel criarPainelImovel(Imovel imovel) {
+        JPanel painelImovel = new JPanel();
+        painelImovel.setLayout(new BoxLayout(painelImovel, BoxLayout.Y_AXIS));
+
+        JLabel lblDescricao = new JLabel("Descrição: " + imovel.getDescricao());
+        JLabel lblLocalidade = new JLabel("Localidade: " + imovel.getLocalidade());
+        JLabel lblPreco = new JLabel("Preço: " + imovel.getPreco());
+
+        JLabel lblImagem = new JLabel();
+        ManipulaImagem.exibirImagemLabel(imovel.getImagem(), lblImagem);
+
+        painelImovel.add(lblImagem);
+        painelImovel.add(lblDescricao);
+        painelImovel.add(lblLocalidade);
+        painelImovel.add(lblPreco);
+
+        return painelImovel;
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -46,12 +77,15 @@ public class TelaCorretor extends javax.swing.JFrame {
         lblDescricao1 = new javax.swing.JLabel();
         lblLocal1 = new javax.swing.JLabel();
         lblPreco1 = new javax.swing.JLabel();
+        txtDescricaoImovel = new javax.swing.JTextField();
+        btnBuscarDadosImovel = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         mnSignUp = new javax.swing.JMenu();
         mnCorretor = new javax.swing.JMenu();
         mnCorretorNovo = new javax.swing.JMenuItem();
         mnCorretorLogin = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
+        mnVerTodosAnuncios = new javax.swing.JMenuItem();
 
         jMenuItem1.setText("jMenuItem1");
 
@@ -67,6 +101,11 @@ public class TelaCorretor extends javax.swing.JFrame {
         jLabel1.setText("Atlas");
 
         txtLocalidadeImovel.setText("localidade");
+        txtLocalidadeImovel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtLocalidadeImovelActionPerformed(evt);
+            }
+        });
 
         cmbTipoImovel.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Apartamento", "Casa", "Terreno", "Imóvel na planta" }));
 
@@ -82,6 +121,20 @@ public class TelaCorretor extends javax.swing.JFrame {
         lblLocal1.setText("Localidade:");
 
         lblPreco1.setText("Preço:");
+
+        txtDescricaoImovel.setText("descrição");
+        txtDescricaoImovel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtDescricaoImovelActionPerformed(evt);
+            }
+        });
+
+        btnBuscarDadosImovel.setText("Buscar");
+        btnBuscarDadosImovel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBuscarDadosImovelActionPerformed(evt);
+            }
+        });
 
         mnSignUp.setText("Criar Conta");
 
@@ -108,6 +161,15 @@ public class TelaCorretor extends javax.swing.JFrame {
         jMenuBar1.add(mnSignUp);
 
         jMenu2.setText("Imoveis");
+
+        mnVerTodosAnuncios.setText("ver anúncios");
+        mnVerTodosAnuncios.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnVerTodosAnunciosActionPerformed(evt);
+            }
+        });
+        jMenu2.add(mnVerTodosAnuncios);
+
         jMenuBar1.add(jMenu2);
 
         setJMenuBar(jMenuBar1);
@@ -119,83 +181,105 @@ public class TelaCorretor extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(26, 26, 26)
-                        .addComponent(txtLocalidadeImovel, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(cmbTipoImovel, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnPesquisarImovel, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(101, 101, 101)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(lblPreco1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(lblPreco, javax.swing.GroupLayout.PREFERRED_SIZE, 283, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(63, 63, 63)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(lblDescricao, javax.swing.GroupLayout.PREFERRED_SIZE, 292, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(lblLocal, javax.swing.GroupLayout.PREFERRED_SIZE, 283, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 19, Short.MAX_VALUE))))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(166, 166, 166)
+                        .addGap(103, 103, 103)
+                        .addComponent(lblImagem, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(0, 1, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(205, 205, 205)
                         .addComponent(jLabel1))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(101, 101, 101)
-                        .addComponent(lblImagem, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
+                        .addGap(87, 87, 87)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(lblPreco1)
-                                .addGap(26, 26, 26))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(101, 101, 101)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(lblDescricao1)
-                                    .addComponent(lblLocal1))
-                                .addGap(18, 18, 18)))
+                            .addComponent(lblDescricao1)
+                            .addComponent(lblLocal1)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(26, 26, 26)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(lblLocal, javax.swing.GroupLayout.DEFAULT_SIZE, 269, Short.MAX_VALUE)
-                            .addComponent(lblPreco, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                .addContainerGap(23, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(lblDescricao, javax.swing.GroupLayout.PREFERRED_SIZE, 249, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txtDescricaoImovel)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(txtLocalidadeImovel, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(cmbTipoImovel, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(btnPesquisarImovel, javax.swing.GroupLayout.DEFAULT_SIZE, 90, Short.MAX_VALUE)
+                            .addComponent(btnBuscarDadosImovel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(18, 18, 18)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(14, 14, 14)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(txtLocalidadeImovel, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(cmbTipoImovel, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(7, 7, 7)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtLocalidadeImovel, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cmbTipoImovel, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnPesquisarImovel, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(30, 30, 30)
-                .addComponent(lblImagem, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(26, 26, 26)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btnBuscarDadosImovel, javax.swing.GroupLayout.DEFAULT_SIZE, 38, Short.MAX_VALUE)
+                    .addComponent(txtDescricaoImovel))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
+                .addComponent(lblImagem, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(lblDescricao1)
-                        .addGap(25, 25, 25)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(lblLocal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(lblLocal1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblPreco, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblPreco1)))
-                    .addComponent(lblDescricao, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(31, Short.MAX_VALUE))
+                    .addComponent(lblDescricao1, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblDescricao, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(34, 34, 34)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(lblLocal1)
+                        .addGap(25, 25, 25))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(lblLocal, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblPreco1, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(lblPreco, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(31, 31, 31))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnPesquisarImovelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisarImovelActionPerformed
-        Imovel imovel = new Imovel();  //fazer paginaçao
-        ImovelDAO imovelDAO;
         try {
-            imovelDAO = new ImovelDAO();  //busca preço do imóvel no banco e exibe no jframe
-            Imovel resultados = imovelDAO.pesquisarImovel(txtLocalidadeImovel.getText(),  (String) cmbTipoImovel.getSelectedItem());
-            lblDescricao.setText(resultados.getDescricao());
-            lblLocal.setText(resultados.getLocalidade());
-            lblPreco.setText(Float.toString(resultados.getPreco()));
-            ManipulaImagem.exibirImagemLabel(resultados.getImagem(), lblImagem);
-            //lblImagem.setIcon(new ImageIcon());
+            ImovelDAO imovelDAO = new ImovelDAO();
+            ArrayList<Imovel> imoveis = imovelDAO.listaImovel(txtLocalidadeImovel.getText(), cmbTipoImovel.getSelectedItem().toString());
+            JPanel painelResultados = new JPanel();
+            painelResultados.setLayout(new BoxLayout(painelResultados, BoxLayout.Y_AXIS));
+            
+            for (Imovel imovel : imoveis) {
+                JPanel painelImovel = criarPainelImovel(imovel);
+                painelResultados.add(painelImovel);
+            }
+            
+            JScrollPane scrollPane = new JScrollPane(painelResultados);
+            scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+            scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+            JFrame frameResultados = new JFrame("Resultados da Pesquisa");
+            frameResultados.setSize(800, 600);
+            frameResultados.add(scrollPane);
+            frameResultados.setVisible(true);
+            
         } catch (Exception ex) {
-            JOptionPane.showMessageDialog(null,"Nada a ser visualizado aqui. " + ex.getMessage());
+            JOptionPane.showMessageDialog(null, "Erro ao buscar imóveis: " + ex.getMessage());
         }
     }//GEN-LAST:event_btnPesquisarImovelActionPerformed
 
@@ -208,6 +292,55 @@ public class TelaCorretor extends javax.swing.JFrame {
         FrameNovoCorretor frameRegistro = new FrameNovoCorretor();
         frameRegistro.setVisible(true);
     }//GEN-LAST:event_mnCorretorNovoActionPerformed
+
+    private void txtLocalidadeImovelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtLocalidadeImovelActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtLocalidadeImovelActionPerformed
+
+    private void btnBuscarDadosImovelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarDadosImovelActionPerformed
+        Imovel imovel = new Imovel();  //fazer paginaçao
+        ImovelDAO imovelDAO;
+        try {
+            imovelDAO = new ImovelDAO();  //busca preço do imóvel no banco e exibe no jframe
+            Imovel resultados = imovelDAO.pesquisarImovel(txtDescricaoImovel.getText());
+            lblDescricao.setText(resultados.getDescricao());
+            lblLocal.setText(resultados.getLocalidade());
+            lblPreco.setText(Float.toString(resultados.getPreco()));
+            ManipulaImagem.exibirImagemLabel(resultados.getImagem(), lblImagem);
+            //lblImagem.setIcon(new ImageIcon());
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null,"Nada a ser visualizado aqui. " + ex.getMessage());
+        }
+    }//GEN-LAST:event_btnBuscarDadosImovelActionPerformed
+
+    private void txtDescricaoImovelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDescricaoImovelActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtDescricaoImovelActionPerformed
+
+    private void mnVerTodosAnunciosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnVerTodosAnunciosActionPerformed
+        try {
+            ImovelDAO imovelDAO = new ImovelDAO();
+            ArrayList<Imovel> imoveis = imovelDAO.listaImovel();
+            JPanel painelResultados = new JPanel();
+            painelResultados.setLayout(new BoxLayout(painelResultados, BoxLayout.Y_AXIS));
+            
+            for (Imovel imovel : imoveis) {
+                JPanel painelImovel = criarPainelImovel(imovel);
+                painelResultados.add(painelImovel);
+            }
+            
+            JScrollPane scrollPane = new JScrollPane(painelResultados);
+            scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+            scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+            JFrame frameResultados = new JFrame("Resultados da Pesquisa");
+            frameResultados.setSize(800, 600);
+            frameResultados.add(scrollPane);
+            frameResultados.setVisible(true);
+            
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, "Erro ao buscar imóveis: " + ex.getMessage());
+        }
+    }//GEN-LAST:event_mnVerTodosAnunciosActionPerformed
 
     /**
      * @param args the command line arguments
@@ -245,6 +378,7 @@ public class TelaCorretor extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnBuscarDadosImovel;
     private javax.swing.JButton btnPesquisarImovel;
     private javax.swing.JComboBox<String> cmbTipoImovel;
     private javax.swing.JLabel jLabel1;
@@ -265,6 +399,8 @@ public class TelaCorretor extends javax.swing.JFrame {
     private javax.swing.JMenuItem mnCorretorLogin;
     private javax.swing.JMenuItem mnCorretorNovo;
     private javax.swing.JMenu mnSignUp;
+    private javax.swing.JMenuItem mnVerTodosAnuncios;
+    private javax.swing.JTextField txtDescricaoImovel;
     private javax.swing.JTextField txtLocalidadeImovel;
     // End of variables declaration//GEN-END:variables
 }
