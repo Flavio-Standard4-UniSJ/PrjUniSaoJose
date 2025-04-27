@@ -5,7 +5,7 @@ public class Cliente extends Usuario {
     private String cpf, identidade, profissao;
     private float salario;
     private String email, telefone;
-    private int id_corretor;
+    private int id, id_corretor;
     
     public Cliente(){
         super();
@@ -75,6 +75,22 @@ public class Cliente extends Usuario {
 
     public void setId_corretor(int id_corretor) {
         this.id_corretor = id_corretor;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public int getAtivo() {
+        return ativo;
+    }
+
+    public void setAtivo(int ativo) {
+        this.ativo = ativo;
     }
     
     
